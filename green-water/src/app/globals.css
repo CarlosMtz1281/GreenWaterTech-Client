@@ -3,18 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+  /*VARIABLES*/
+  --primary: #080b32;
+  --secondary: #3772da;
+  --accent: #5a8be1;
+  --white: #FFFFFF
+  --offWhite: #F5F5F5
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -24,4 +21,81 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+
+
+/*NAV BAR*/
+
+.NavContainer{
+  background-color: var(--primary);
+  height: 100vh;
+  width:15vw;
+
+}
+.nav-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15vw;
+  height: 15vh;
+}
+.nav-header h1{
+  color: white;
+  font-size: 1.5vw;
+  font-weight: 600;
+}
+.nav-divider{
+  display: flex;
+  width: 11vw;
+  height: 2px;
+  background-color: white;
+  justify-content: center;
+  margin-left: 2vw;
+}
+.nav-links{
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 15vw;
+  margin-top: 2vh;
+}
+.nav-item{
+  display: flex;
+  align-items: center;
+  width: 15vw;
+  height: 5vh;
+  margin-left: 2vw;
+  margin-top: 1vh;
+  font-size: 1.5vw;
+  color: white;
+}
+.nav-item p{
+  margin-left: 1vw;
+}
+
+.nav-footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15vw;
+  height: 15vh;
+}
+.logOut-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  width: 10vw;
+  height: 5vh;
+  margin-top: 2vh;
+  font-size: 1.5vw;
+  color: white;
+  background-color: var(--secondary);
+
+}
+.logOut-btn:hover{
+  background-color: var(--accent);
+  cursor: pointer;
+
 }
