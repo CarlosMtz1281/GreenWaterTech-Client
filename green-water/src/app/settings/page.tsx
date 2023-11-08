@@ -1,34 +1,36 @@
-import React from "react";
-import NavBar from "../NavBar/page";
+import React from 'react';
+import { Container, Grid, TextField, Button, Typography } from '@mui/material';
+import NavBar from '../NavBar/page';
 
-function SettingsPage() {
+const ConfigurationPage = () => {
   return (
     <div style = {{display: "flex"}}>
 
-      <div>
         <NavBar />
-      </div>
 
-      <div>
-        <h1>Configuration Page</h1>
-        <form>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" name="name" />
-          <br />
-
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" name="email" />
-          <br />
-
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
-          <br />
-
-          <button type="submit">Save</button>
-        </form>
-      </div>
+    <Container maxWidth="md" style = {{margin: 50}}>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Typography variant="h6" noWrap>Configuration page</Typography>
+          </Grid>
+        <Grid item xs={12}>
+          <TextField label="Device Name" fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField label="Device ID" fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField label="API Key" fullWidth />
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="contained" style = {{backgroundColor: "blue"}}>
+            Save
+          </Button>
+        </Grid>
+      </Grid>
+    </Container>
     </div>
   );
-}
+};
 
-export default SettingsPage;
+export default ConfigurationPage;

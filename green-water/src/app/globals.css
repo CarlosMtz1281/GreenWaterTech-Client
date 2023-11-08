@@ -105,3 +105,41 @@ body {
   cursor: pointer;
 
 }
+
+.signupbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #3772da;
+}
+
+.signupbtn:hover {
+  background-color: var(--accent);
+  cursor: pointer;
+}
+
+/*LOGIN PAGE*/
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.logpagelink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.logpagelink:hover {
+  color: var(--accent);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
