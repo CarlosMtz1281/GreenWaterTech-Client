@@ -5,8 +5,12 @@ const TestPage = () => {
   return (
     
     <div>
-        <NavBar/>
-      <p>If you can see this, the route is working!</p>
+        <div>
+            <NavBar/>
+        </div>
+        <div>
+            <h1>Test Page</h1>
+            </div>
     </div>
   );
 };

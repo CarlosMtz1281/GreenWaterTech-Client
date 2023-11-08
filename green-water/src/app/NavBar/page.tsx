@@ -1,8 +1,10 @@
 import React from 'react';
 import{AiFillHome} from 'react-icons/ai';
 import{FiSettings} from 'react-icons/fi';
+import Link from 'next/link';
 
 export default function NavBar(){
+
     return(
         <div className="NavContainer">
             <div className="nav-header">
@@ -12,14 +14,18 @@ export default function NavBar(){
             <div className="nav-divider"/>
 
             <ul className="nav-links">
+                <Link href="/">
                 <li className="nav-item">
                     <AiFillHome size={25}/>
                     <p>Home</p>
                 </li>
+                </Link>
+                <Link href="/settings">
                 <li className="nav-item">
                     <FiSettings size={25}/>
                     <p>Settings</p>
                 </li>
+                </Link>
 
             </ul>
 
