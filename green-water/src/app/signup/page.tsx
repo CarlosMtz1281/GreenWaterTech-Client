@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button, TextField, Alert, Stack, Typography } from '@mui/material';
-import GoogleIcon from '@mui/icons-material';
+import GoogleIcon from '@mui/icons-material/Google';
 import { firebaseConfig } from '../firebase/firebaseconfig';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -74,9 +74,9 @@ const SignupPage = () => {
 
             <Typography style = {{fontWeight: "lighter"}} variant="h5">Or, use your Google Account</Typography>
 
-            <Button className = "googlebtn" type="submit">
-                <GoogleIcon/> 
-            Sign Up with Google
+            <Button className = "googlebtn">
+                <GoogleIcon/>
+                Sign Up with Google
             </Button>
 
             {Error !== '' && <Alert severity="error">{Error}</Alert>}
