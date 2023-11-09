@@ -76,11 +76,6 @@ const SignInPage = () => {
 
             <Typography style = {{fontWeight: "lighter"}} variant="h5">Or, use your Google Account</Typography>
 
-            <Button className = "googlebtn">
-                <GoogleIcon/>
-                Sign Up with Google
-            </Button>
-
             {Error !== '' && <Alert severity="error">{Error}</Alert>}
             </Stack>
 

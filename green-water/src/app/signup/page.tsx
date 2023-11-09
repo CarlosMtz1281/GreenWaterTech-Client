@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { Button, TextField, Alert, Stack, Typography } from '@mui/material';
+import { Button, TextField, Alert, Stack, Typography, Paper } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { firebaseConfig } from '../firebase/firebaseconfig';
 import { initializeApp } from "firebase/app";
@@ -49,9 +49,12 @@ const SignupPage = () => {
 
     return (
         <div className='signcontainer'>
+            
+        <Paper elevation={5} style = {{height: "50vh", padding: 30}}>
         <form className = "formcontainer" onSubmit={handleSubmit}>
+            
             <Stack spacing={3}>
-            <Typography style = {{fontWeight: "lighter"}} variant="h4">Register</Typography>
+            <Typography style = {{fontWeight: "lighter", fontSize: "3vh"}} variant="h4">Register</Typography>
             <TextField
                 required
                 id="email"
@@ -70,19 +73,15 @@ const SignupPage = () => {
                 value={password}
                 onChange={handlePasswordChange}
             />
-            <Button className = "signupbtn" type="submit">Submit</Button>
-
-            <Typography style = {{fontWeight: "lighter"}} variant="h5">Or, use your Google Account</Typography>
-
-            <Button className = "googlebtn">
-                <GoogleIcon/>
-                Sign Up with Google
-            </Button>
+            <Button className = "loginbtn" type="submit">Sign Up</Button>
+            
 
             {Error !== '' && <Alert severity="error">{Error}</Alert>}
             </Stack>
+            
 
         </form>
+        </Paper>
         </div>
     );
 };

@@ -22,7 +22,7 @@ export default function Home() {
           </Typography>
 
           <Stack spacing={2}>
-          <Link href="/home" className = "logpagelink">
+          <Link href="/signup" className = "logpagelink">
             <Fab variant="extended" className="signupbtn">
               <Typography style={{ fontWeight: 500 }} noWrap>
                 Get Started
