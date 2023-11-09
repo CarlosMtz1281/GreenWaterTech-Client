@@ -17,10 +17,11 @@ export default function Home() {
         className="home introduction"
       >
         <Stack spacing={4}>
-          <Typography style={{ fontSize: "3vw", fontWeight: 200 }} noWrap>
+          <Typography style={{ fontSize: "5vw", fontWeight: "lighter", color: "white" }} noWrap>
             Hello, welcome to Green Water Tech
           </Typography>
 
+          <Stack spacing={2}>
           <Link href="/home" className = "logpagelink">
             <Fab variant="extended" className="signupbtn">
               <Typography style={{ fontWeight: 500 }} noWrap>
@@ -29,11 +30,12 @@ export default function Home() {
             </Fab>
           </Link>
 
-          <Link href="/home" className = "logpagelink">
-            <Typography style={{ fontWeight: 500, color: "black" }} noWrap>
+          <Link href="/loginpage" className = "logpagelink">
+            <Typography style={{ fontWeight: 500, color: "white" }} noWrap>
               I already have an account
             </Typography>
           </Link>
+          </Stack>
         </Stack>
       </div>
     </main>

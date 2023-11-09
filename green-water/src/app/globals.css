@@ -15,12 +15,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(to right, #DECBA4, #3E5151);
 }
 
 
@@ -112,6 +107,10 @@ body {
   justify-content: center;
   color: white;
   background-color: #3772da;
+  border-radius: 25px;
+  text-transform: none;
+  height: 5vh;
+  width: 20vw;
 }
 
 .signupbtn:hover {
@@ -136,12 +135,6 @@ body {
   color: white;
 }
 
-.logpagelink:hover {
-  color: var(--accent);
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  transform: scale(1.1);
-}
 
 /*SIGNUP PAGE*/
 .signcontainer {
@@ -151,6 +144,22 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: white;
+}
+
+.loginbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #3772da;
+  border-radius: 25px;
+  text-transform: none;
+}
+
+.loginbtn:hover {
+  background-color: var(--accent);
+  cursor: pointer;
 }
 
 .formcontainer {
@@ -165,10 +174,12 @@ body {
   justify-content: center;
   color: rgb(0, 0, 0);
   background-color: #ffffff;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(114, 114, 114);
   border-radius: 25px;
   text-transform: none;
+}
+
+.googlebtn:hover {
+  background-color: beige;
+  cursor: pointer;
 }
 
