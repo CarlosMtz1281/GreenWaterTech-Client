@@ -3,6 +3,7 @@ import { Container, Grid, TextField, Button, Typography } from "@mui/material";
 import NavBar from "../NavBar/page";
 
 const Home = () => {
+
   return (
     <div style={{ display: "flex" }}>
       <NavBar />

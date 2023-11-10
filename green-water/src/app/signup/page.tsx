@@ -5,7 +5,7 @@ import { Button, TextField, Alert, Stack, Typography, Paper } from '@mui/materia
 import { firebaseConfig } from '../firebase/firebaseconfig';
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, collection, addDoc, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, getDoc, doc, setDoc } from 'firebase/firestore';
 
 
 function SignupPage (){
@@ -67,15 +67,19 @@ function SignupPage (){
 
                 try {
                     const docRef = doc(db, "users", email);
+                    console.log('docRef:', docRef);
                     const payload = { email: userId };
+                    console.log('payload:', payload);
                     await setDoc(docRef, payload);
                     console.log('User added to Firestore with ID:', email);
                 } catch (error) {
                     console.error('Error adding user to Firestore:', error);
                 }
 
+                const encodedEmail = encodeURIComponent(email);
+
                 // Finally, redirect to the home page
-                window.location.href = '/home';
+                // window.location.href = `home/${encodedEmail}`;
             })
             .catch((error) => {
                 const errorCode = error.code;
