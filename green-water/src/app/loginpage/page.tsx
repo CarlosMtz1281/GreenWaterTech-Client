@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import { Button, TextField, Alert, Stack, Typography } from '@mui/material';
+import { Button, TextField, Alert, Stack, Typography, Paper } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';
 import { firebaseConfig } from '../firebase/firebaseconfig';
 import { initializeApp } from "firebase/app";
@@ -32,7 +32,11 @@ const SignInPage = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                window.location.href = '/home';
+
+                const encodedEmail = encodeURIComponent(email);
+
+                // Finally, redirect to the home page
+                window.location.href = `home/${encodedEmail}`;
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -50,9 +54,10 @@ const SignInPage = () => {
 
     return (
         <div className='signcontainer'>
+            <Paper elevation={5} style = {{height: "50vh", padding: 30}}>
         <form className = "formcontainer" onSubmit={handleSubmit}>
             <Stack spacing={3}>
-            <Typography style = {{fontWeight: "lighter"}} variant="h4">Sign In</Typography>
+            <Typography style = {{fontWeight: "lighter"}} variant="h4">Log in to your account</Typography>
             <TextField
                 required
                 id="email"
@@ -74,12 +79,11 @@ const SignInPage = () => {
 
             <Button className = "loginbtn" type="submit">Log In</Button>
 
-            <Typography style = {{fontWeight: "lighter"}} variant="h5">Or, use your Google Account</Typography>
-
             {Error !== '' && <Alert severity="error">{Error}</Alert>}
             </Stack>
 
         </form>
+        </Paper>
         </div>
     );
 };
