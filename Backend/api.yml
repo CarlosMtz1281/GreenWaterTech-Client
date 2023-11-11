@@ -1,0 +1,25 @@
+# Archivo de configuracion para App Engine
+  #hacer deploy en vez de gcloud app deploy, usar gcloud app deploy api.yml para poder subirlo como servicio a un solo proyecto
+
+runtime: python38
+service: api
+
+entrypoint: gunicorn -b :$PORT app:app
+
+env_variables:
+  creds: "serviceAccCreds.json"
+  FLASK_ENV: "production"
+
+# # Handlers
+# handlers:
+#   - url: /.*
+#     script: auto
+#     secure: always
+
+#Creo que no es necesario usar handlers pq para subir servicios hay que subir otro yaml -> dispatch.yaml en el root del proyecto
+
+# Dispatch.yaml
+# dispatch:
+#     # Send all trafic on /api to api service.
+#     - url: '*/api'
+#       service: api
