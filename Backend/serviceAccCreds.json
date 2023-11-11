@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "greenwatertech-572bc",
+  "private_key_id": "b52eda471d5c8335a816f6d610b7892cf224bd92",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTeEEb30bI5Zlt\n64QgMmop1Uls/lHdp7H1UPaW0+2k6wnjtRX9KpgEZHrMQenqSjnWx5s2gP9GW7SO\nEWDVFlbBWHyHmyTxv5m4B/QsKGNPDrfrJe/45eTMEHMqKE6X86/4ibd8jfD3DSPP\nDW/Hmke3TfZ6APT2d1AbqCRT913yJnfVDrZstdKYbq10RKdhfrWJnDbyMuxtT0/Y\ncvbpPgyvzhhRL46NhTdZfP1Ji3S6/8U5L2OpKemMRC1AQW27JKV/VxM/Z9RVRa6o\nhLlzXcwjvSI3ZO2f59WXbJkGkUQwfAt5dNjL7eRRyfP4kYjvkPYRrMPY6WdOIaAU\nswIZbU8HAgMBAAECggEAAkh3Hv7nqZxEm4C4bhZaqjttt0KHK0m1uqFl7oJhnPxl\nux8irGWRCP1QqI1qN1lx851TM3SrgtabnzNTQ4sobzaCV8Bn0O328z9mZMhEHNvl\ncies/5C8hnL1dBE/vgJwA8ppFnzFXqPmHTrUs2Wovt7mzLTrnXtzkrig8uGajNMu\nnTYAuYHjR6X1oHjjubwD4HmYoBzWKhc9ykQV/o7yOmaCk3efFI9phC2FgrqvMuhg\nMbXx7TKL3IWEgEanIrLrk9Mlt0/DsL1mdYx0g7bPYe7CpmQN31JeoT3Zu6rJDKjI\nz8K4AwslOkAdg173VX5qoyX5/EsdHZ5XbXAMNblaAQKBgQDMFyr4MXRRJKSF+6M0\naO/iUDCnGOc5l7XKyxBW1k5idLoeCm0wZDdzfy7V0AsMhAUGIoJypStiho3/Zm3S\nLh6vssTCys0dDaDdfz52x8DOTa1wH9RNs+ySZHJVpnsnZktheN7Cnxpfk1n/AZG5\nDKte9yq+nu8iAN3kRb1bx+x+AQKBgQC4+l7UAH2li8m2tmX8uWHTfnL3BXW4X7ZU\nA01C8wijaZtINZjE1grzLPUhL2gCpp+bQsAeoDY20IbSBj048Rhpv68crrzK2Qi/\nw72WhXZCcsFiSy92eFbg9HnbkwL4nomcf+oY2OST4RLJjkuK/jeFei/d154l3C4q\nCQyrVy/dBwKBgQC0LiQGeIrLdIE3tIBSre5SrB839rl01CZwAjTLpWoQbCNAkE3z\nshZuhjNQGtsWUpuo3eCy3HVgB5DnkYOVUphO35Hss2TAqJ6DzmnULehfep6LZd5m\nN1m9qKZ0TYVetGYKiM6JnjOHe6yxgK4pZDELp0T6g5B1QbSkapmRpQB6AQKBgCMv\nbK5C0aOVrW7Vzxx9XsBOAyw9m6DQg+wDHMUpWXFL+z+HAmIenMKYwJ/pVo16iE2O\nKuEodGeEzsBQc4DLS2uCDJsWGc8z7VgcsYlaJZ6KGYLK7mJIja4Iks1Tb3M/JMni\nAvNq/j+qxloUeQYdSQ5YqZY3F1v4P8e7JO/Ki84tAoGAJyPWw8m9RSpnR5AuvS/s\nc7dRox0Ldi2jqdgMfUYUVR7u6UJXVcbpBHVE+PPJIoQ9VBSVdUh20IyumSF+Fkri\nnPivvMCJoInjxEJQlhfA+uGkMAwsVpFYBA6PLLa/5miU2ImiF0UMtPNTOv4Doxf9\nZTV3lgawoqssY+mLT4cnkIw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-tb3gb@greenwatertech-572bc.iam.gserviceaccount.com",
+  "client_id": "113694242304423745420",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-tb3gb%40greenwatertech-572bc.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
