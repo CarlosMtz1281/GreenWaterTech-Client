@@ -3,7 +3,7 @@ from firebase_admin import credentials, db
 
 ## Acceder a la base de datos:
 #Recuperar las credenciales del firebase
-creds = credentials.Certificate('serviceAccCreds.json')
+creds = credentials.Certificate('Backend/serviceAccCreds.json')
 
 #link de la base de datos
 url = 'https://greenwatertech-572bc-default-rtdb.firebaseio.com/'
@@ -13,13 +13,33 @@ firebase_admin.initialize_app(creds, {
     'databaseURL': url #Aqui va el url del firebase que tiene toda la info general
 })
 
-userGlobal = ""
+userGlobal = "Fernando"
 
 #Funciones para cambiar base de datos
+def updateUser(user):
+    #Cambiar nombre user
+    refUser = db.reference(f"Users/{userGlobal}")
+    data = refUser.get() #Guardr la info 
+    refUserUpdated = db.reference(f"Users/{user}")
+    userGlobal = user
+    refUserUpdated.set(data) #Reescribir la info en la nueva ruta
+    refUser.delete() #Borrar la anterior
 
+def updateCampo(campo, campoNew):
+    #Cambiar nombre campo
+    campo = db.reference(f"Users/{userGlobal}/{campo}")
+    dataC = campo.get()
+    campoUpdated = db.reference(f"Users/{userGlobal}/{campoNew}")
+    campoUpdated.set(dataC)
+    campo.delete()
 
-
-
+def updateCuadranteInfo(campo, cuadrante, planta, temp, hum):
+    campo = db.reference(f"Users/{userGlobal}/{campo}/{cuadrante}")
+    planta = campo.child(planta)
+    planta.update({
+        "Humedad" : hum,
+        "Temperatura" : temp
+    })
 
 #Funciones para obtener los datos de la base de datos
 def getUserInfo(user):
@@ -37,10 +57,19 @@ def getCuadrantes(campo, cuadrante):
 
 
 #Pruebas
-data = getCampos('-NizbbRQkf0AqfSdZIfv', 'campo1')
-print(data)
+ref = db.reference('Users')
+ref_child = ref.child('Usuario_prueba3')
+ref_child.set({
+    "campo1":{
+        "cuadrante1":{
+            "planta1":{
+                "Humedad" : 0,
+                "Temperatura" : 0
+            }
+        }
+    }
+})
 
-print("\n")
+# .update() solo actualiza keys con values, para cambiar los nombres hay que crear otro nodo y reescribir la info;
 
-data2 = getUserInfo('-NizbbRQkf0AqfSdZIfv')
-print(data2)
+updateCuadranteInfo("el campillo", "cuadrante1", "planta1", 5, 23.4)
