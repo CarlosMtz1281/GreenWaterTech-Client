@@ -18,21 +18,8 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc, DocumentData } from "firebase/firestore";
 import NavBar from "../.././NavBar/page";
 
-function dashboardCards(cuadrante: string, name: string) {
-  const [temp, setTemp] = useState<string>("");
-  const [hum, setHum] = useState<string>("");
+function dashboardCards(Temperatura: string, Humedad: string, name: string) {
 
-  useEffect(() => {
-    if (cuadrante && cuadrante.includes(',')) {
-      // Separate data from "0, 0" into temp and hum
-      const data = cuadrante.split(",");
-      setTemp(data[0].trim());
-      setHum(data[1].trim());
-    } else {
-      setTemp("");
-      setHum("");
-    }
-  }, [cuadrante]);
 
   return (
     <div>
@@ -42,15 +29,14 @@ function dashboardCards(cuadrante: string, name: string) {
             {name}
           </Typography>
 
-          {cuadrante === "" ? (
+          {Temperatura === "" ? (
             <Box display="flex" justifyContent="center" alignItems="center">
               <CircularProgress color="success" />
             </Box>
           ) : (
             <Typography variant="h6">
-              Temperatura: {temp}°C
-              <br />
-              Humedad: {hum}%
+              Temperatura: {Temperatura}°C
+              Humedad: {Humedad}%
             </Typography>
           )}
         </Stack>
@@ -91,25 +77,38 @@ export default function Home({ params }) {
   }, [user]);
 
   // Retrieve user data from Realtime Database
+  const [campo, setCampo] = useState<string>("");
   const [cuadrante1, setCuadrante1] = useState<string>("");
   const [cuadrante2, setCuadrante2] = useState<string>("");
   const [cuadrante3, setCuadrante3] = useState<string>("");
   const [cuadrante4, setCuadrante4] = useState<string>("");
+  const [cuad1Temp, setCuad1Temp] = useState<string>("");
+  const [cuad1Hum, setCuad1Hum] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://greenwatertech-572bc-default-rtdb.firebaseio.com/Users/${userKey}.json`
+        `https://greenwatertech-572bc-default-rtdb.firebaseio.com/Users/${userKey}/campo1/cuadrante1/Humedad.json`
+
       );
       const data = await response.json();
-      setCuadrante1(data.cuadrante1);
-      setCuadrante2(data.cuadrante2);
-      setCuadrante3(data.cuadrante3);
-      setCuadrante4(data.cuadrante4);
+      setCuad1Hum(data);
+
+      const response2 = await fetch(
+        `https://greenwatertech-572bc-default-rtdb.firebaseio.com/Users/${userKey}/campo1/cuadrante1/Temperatura.json`
+      );
+
+      var data2 = await response2.json();
+      // Round temperature to 2 decimals
+      data2 = Math.round(data2 * 100) / 100;
+      setCuad1Temp(data2);
+
     };
 
     fetchData();
   }, [userKey]);
+
+
 
   return (
     <div style={{ display: "flex" }}>
@@ -124,19 +123,7 @@ export default function Home({ params }) {
           </Grid>
 
           <Grid item xs={6}>
-            {dashboardCards(cuadrante1, "Cuadrante 1")}
-          </Grid>
-
-          <Grid item xs={6}>
-            {dashboardCards(cuadrante2, "Cuadrante 2")}
-          </Grid>
-
-          <Grid item xs={6}>
-            {dashboardCards(cuadrante3, "Cuadrante 3")}
-          </Grid>
-
-          <Grid item xs={6}>
-            {dashboardCards(cuadrante4, "Cuadrante 4")}
+            {dashboardCards(cuad1Temp, cuad1Hum, "Cuadrante 1")}
           </Grid>
         </Grid>
       </Container>
