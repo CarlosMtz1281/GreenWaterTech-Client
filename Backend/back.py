@@ -33,6 +33,14 @@ def updateCampo(campo, campoNew):
     campoUpdated.set(dataC)
     campo.delete()
 
+def updateCuadrante(campo, cuadrante, cuadranteNew):
+    cuadrante = db.reference(f"Users/{userGlobal}/{campo}/{cuadrante}")
+    data = cuadrante.get()
+    cuadranteUpdated = db.reference(f"Users/{userGlobal}/{campo}/{cuadranteNew}")
+    cuadranteUpdated.set(data)
+    cuadrante.delete()
+    
+
 def updateCuadranteInfo(campo, cuadrante, planta, temp, hum):
     campo = db.reference(f"Users/{userGlobal}/{campo}/{cuadrante}")
     planta = campo.child(planta)
@@ -72,4 +80,4 @@ ref_child.set({
 
 # .update() solo actualiza keys con values, para cambiar los nombres hay que crear otro nodo y reescribir la info;
 
-updateCuadranteInfo("el campillo", "cuadrante1", "planta1", 5, 23.4)
+updateCuadrante("el campillo", "cuadrante1", "el cuadrantillo")
