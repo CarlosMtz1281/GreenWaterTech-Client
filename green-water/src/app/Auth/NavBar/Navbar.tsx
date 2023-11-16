@@ -5,6 +5,7 @@ import { FiSettings } from "react-icons/fi";
 import Link from "next/link";
 import { useState } from "react";
 import { get } from "http";
+import logo from "../../assets/logoGreenWater.png";
 
 
 
@@ -21,11 +22,11 @@ export default function NavBar() {
 
     <div className="NavContainer">
       <div className="nav-header">
-        <h1>
+        <img src="./assets/logoGreenWater.png" alt="Logo"/>
+      </div>
+      <h1>
           Green Water <br /> Tech
         </h1>
-      </div>
-
       <div className="nav-divider" />
 
       <ul className="nav-links">
