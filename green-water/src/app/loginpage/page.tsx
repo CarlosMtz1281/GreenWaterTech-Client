@@ -27,16 +27,16 @@ const SignInPage = () => {
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(`Submitting email: ${email} and password: ${password}`);
-        
+
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                // Signed in 
+                // Signed in
                 const user = userCredential.user;
 
                 const encodedEmail = encodeURIComponent(email);
 
                 // Finally, redirect to the home page
-                window.location.href = `home/${encodedEmail}`;
+                window.location.href = `Auth/home/${encodedEmail}`;
             })
             .catch((error) => {
                 const errorCode = error.code;

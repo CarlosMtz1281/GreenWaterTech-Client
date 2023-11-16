@@ -12,13 +12,16 @@ import {
   Stack,
   Box,
 } from "@mui/material";
-import { firebaseConfig } from "../.././firebase/firebaseconfig";
+import { firebaseConfig } from "../../../firebase/firebaseconfig";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, getDoc, DocumentData } from "firebase/firestore";
-import NavBar from "../.././NavBar/page";
+import NavBar from "../../NavBar/Navbar";
+
+import TarjetaCampo from "@/app/components/TarjetaCampo";
 
 function dashboardCards(Temperatura: string, Humedad: string, name: string) {
+
 
 
   return (
@@ -46,6 +49,71 @@ function dashboardCards(Temperatura: string, Humedad: string, name: string) {
 }
 
 export default function Home({ params }) {
+  const testData =[
+    {
+      id: 1,
+      name: "Campo 1",
+      cuadrantes: [
+        {
+          id: 1,
+          name: "Cuadrante 1",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 2,
+          name: "Cuadrante 2",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 3,
+          name: "Cuadrante 3",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 4,
+          name: "Cuadrante 4",
+          temperatura: 20,
+          humedad: 50,
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Campo 2",
+      cuadrantes: [
+        {
+          id: 1,
+          name: "Cuadrante 1",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 2,
+          name: "Cuadrante 2",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 3,
+          name: "Cuadrante 3",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 4,
+          name: "Cuadrante 4",
+          temperatura: 20,
+          humedad: 50,
+        },
+      ],
+
+    }
+  ]
+
+
   const userEmail = decodeURIComponent(params.useremail);
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -111,22 +179,14 @@ export default function Home({ params }) {
 
 
   return (
-    <div style={{ display: "flex" }}>
-      <NavBar />
+    <div>
+        <h1 className="home-tittle">Hello {userEmail}</h1>
+        <div className="home-cardContainer">
+            {testData.map((item, index) => (
+            <TarjetaCampo key={index} data={item} />
+          ))}
+        </div>
 
-      <Container maxWidth="md" style={{ margin: 70 }}>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Typography variant="h4" style={{ color: "white" }}>
-              Hello {userEmail}, welcome to your dashboard.
-            </Typography>
-          </Grid>
-
-          <Grid item xs={6}>
-            {dashboardCards(cuad1Temp, cuad1Hum, "Cuadrante 1")}
-          </Grid>
-        </Grid>
-      </Container>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import NavBar from "./NavBar/page";
+import NavBar from "./Auth/NavBar/Navbar";
 import {
   Container,
   Grid,

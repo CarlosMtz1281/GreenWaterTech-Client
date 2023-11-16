@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid, TextField, Button, Typography } from "@mui/material";
-import NavBar from "../NavBar/page";
+import NavBar from "../NavBar/Navbar";
 
 const Home = () => {
 

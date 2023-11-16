@@ -1,12 +1,10 @@
 import React from 'react';
 import { Container, Grid, TextField, Button, Typography } from '@mui/material';
-import NavBar from '../NavBar/page';
 
 const ConfigurationPage = () => {
+  console.log("Configuration page");
   return (
     <div style = {{display: "flex"}}>
-
-        <NavBar />
 
     <Container maxWidth="md" style = {{margin: 50}}>
       <Grid container spacing={3}>
