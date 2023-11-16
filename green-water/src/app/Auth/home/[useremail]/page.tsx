@@ -23,6 +23,7 @@ import TarjetaCampo from "@/app/components/TarjetaCampo";
 function dashboardCards(Temperatura: string, Humedad: string, name: string) {
 
 
+
   return (
     <div>
       <Card style={{ padding: 20 }}>
@@ -48,6 +49,71 @@ function dashboardCards(Temperatura: string, Humedad: string, name: string) {
 }
 
 export default function Home({ params }) {
+  const testData =[
+    {
+      id: 1,
+      name: "Campo 1",
+      cuadrantes: [
+        {
+          id: 1,
+          name: "Cuadrante 1",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 2,
+          name: "Cuadrante 2",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 3,
+          name: "Cuadrante 3",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 4,
+          name: "Cuadrante 4",
+          temperatura: 20,
+          humedad: 50,
+        },
+      ],
+    },
+    {
+      id: 2,
+      name: "Campo 2",
+      cuadrantes: [
+        {
+          id: 1,
+          name: "Cuadrante 1",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 2,
+          name: "Cuadrante 2",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 3,
+          name: "Cuadrante 3",
+          temperatura: 20,
+          humedad: 50,
+        },
+        {
+          id: 4,
+          name: "Cuadrante 4",
+          temperatura: 20,
+          humedad: 50,
+        },
+      ],
+
+    }
+  ]
+
+
   const userEmail = decodeURIComponent(params.useremail);
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -116,7 +182,9 @@ export default function Home({ params }) {
     <div>
         <h1 className="home-tittle">Hello {userEmail}</h1>
         <div className="home-cardContainer">
-
+            {testData.map((item, index) => (
+            <TarjetaCampo key={index} data={item} />
+          ))}
         </div>
 
     </div>
