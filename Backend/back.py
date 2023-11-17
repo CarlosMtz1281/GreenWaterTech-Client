@@ -13,7 +13,7 @@ firebase_admin.initialize_app(creds, {
     'databaseURL': url #Aqui va el url del firebase que tiene toda la info general
 })
 
-userGlobal = "Fernando"
+userGlobal = ""
 
 #Funciones para cambiar base de datos
 def updateUser(user):
