@@ -95,6 +95,7 @@ html{
   font-weight: 600;
   color: var(--primary);
   background-color: #DCDBBE;
+  width: 12vw;
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   transform: translateX(1.5vw);

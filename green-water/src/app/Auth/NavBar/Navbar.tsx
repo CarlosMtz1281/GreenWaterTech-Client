@@ -5,8 +5,10 @@ import { FiSettings } from "react-icons/fi";
 import Link from "next/link";
 import { useState } from "react";
 import { get } from "http";
-import { LogoGreenWater } from "@/app/assets";
 import { useEffect } from "react";
+import Image from "next/image";
+import LogoGreenWater from "../../../../public/logoGreenWater.png";
+
 
 //Definicion de path type
 enum PathType {
@@ -41,7 +43,7 @@ export default function NavBar() {
 
     <div className="NavContainer">
       <div className="nav-header">
-        <img src={LogoGreenWater} alt="Logo"/>
+        <Image src="/logoGreenWater.png" alt="Logo Green Water"  width={500} height={500}/>
       </div>
       <h1 className="nav-tittle">
           Green Water Tech
