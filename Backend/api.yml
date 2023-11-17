@@ -1,14 +1,14 @@
 # Archivo de configuracion para App Engine
   #hacer deploy en vez de gcloud app deploy, usar gcloud app deploy api.yml para poder subirlo como servicio a un solo proyecto
 
-runtime: python38
-service: api
+# runtime: python38
+# service: api
 
-entrypoint: gunicorn -b :$PORT app:app
+# entrypoint: gunicorn -b :$PORT app:app
 
-env_variables:
-  creds: "serviceAccCreds.json"
-  FLASK_ENV: "production"
+# env_variables:
+#   creds: "serviceAccCreds.json"
+#   FLASK_ENV: "production"
 
 # # Handlers
 # handlers:

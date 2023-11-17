@@ -1,8 +1,11 @@
 from flask import Flask, request
 import os
 from back import getCampos, getCuadrantes, getUserInfo
+from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="build")
+
+CORS(app, origins=["https://gwt-back.uc.r.appspot.com"])
 
 @app.route('/api/getUser', methods=['GET'])
 def get_user():
@@ -29,4 +32,4 @@ def get_cuadrantes():
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True, host="3000")
+    app.run(port="5000", debug=True, threaded=True, use_reloader=True)
