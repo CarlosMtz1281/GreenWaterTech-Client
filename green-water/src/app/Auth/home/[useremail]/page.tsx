@@ -113,6 +113,8 @@ export default function Home({ params }) {
     }
   ]
 
+  const [realData,setRealData] = useState([]);
+
 
   const userEmail = decodeURIComponent(params.useremail);
   const app = initializeApp(firebaseConfig);
@@ -171,20 +173,26 @@ export default function Home({ params }) {
       data2 = Math.round(data2 * 100) / 100;
       setCuad1Temp(data2);
 
+      const response3 = await fetch(
+        `https://greenwatertech-572bc-default-rtdb.firebaseio.com/Users/${userKey}/.json`
+      );
+
+      setRealData(await response3.json());
+
     };
 
     fetchData();
   }, [userKey]);
 
-
+    console.log(realData);
 
   return (
     <div>
         <h1 className="home-tittle">Hello {userEmail}</h1>
         <div className="home-cardContainer">
-            {testData.map((item, index) => (
-            <TarjetaCampo key={index} data={item} />
-          ))}
+            {testData.length > 0 && testData.map((item, index) => (
+  <TarjetaCampo key={index} data={item} />
+))}
         </div>
 
     </div>
