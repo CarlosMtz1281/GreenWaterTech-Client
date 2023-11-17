@@ -5,7 +5,14 @@ import { FiSettings } from "react-icons/fi";
 import Link from "next/link";
 import { useState } from "react";
 import { get } from "http";
-import logo from "../../assets/logoGreenWater.png";
+import { LogoGreenWater } from "@/app/assets";
+import { useEffect } from "react";
+
+//Definicion de path type
+enum PathType {
+  Home = "/Auth/home",
+  Settings = "/Auth/settings",
+}
 
 
 
@@ -17,31 +24,48 @@ export default function NavBar() {
       setUserMail(window.location.href.split("/")[5])
     }
   }
+  //lector y manejo de current path
+  const [currentPath, setCurrentPath] = useState("");
+  var URL;
+  useEffect(() => {
+    URL = window.location.href.split("/")[5];
+    setCurrentPath(URL);
+  }, []);
+  console.log(currentPath);
+
+  const isPathActive = (path: PathType) => {
+    return currentPath === path ? true : false;
+  };
 
   return (
 
     <div className="NavContainer">
       <div className="nav-header">
-        <img src="./assets/logoGreenWater.png" alt="Logo"/>
+        <img src={LogoGreenWater} alt="Logo"/>
       </div>
-      <h1>
-          Green Water <br /> Tech
+      <h1 className="nav-tittle">
+          Green Water Tech
         </h1>
       <div className="nav-divider" />
 
       <ul className="nav-links">
-        <Link href={`/Auth/home/${userMail}`}>
-          <li className="nav-item">
-            <AiFillHome size={25} />
-            <p>Home</p>
-          </li>
-        </Link>
-        <Link href="/Auth/settings">
-          <li className="nav-item">
-            <FiSettings size={25} />
-            <p>Settings</p>
-          </li>
-        </Link>
+        <div onClick={()=> setCurrentPath("/Auth/home")}>
+          <Link href={`/Auth/home/${userMail}`}>
+            <li className={`nav-item ${"/Auth/home" == currentPath ? 'active' : ''}`}>
+              <AiFillHome size={25} />
+              <p>Home</p>
+            </li>
+          </Link>
+        </div>
+
+        <div onClick={()=> setCurrentPath("/Auth/settings")}>
+          <Link href="/Auth/settings">
+            <li className={`nav-item ${"/Auth/settings" == currentPath ? 'active' : ''}`}>
+              <FiSettings size={25} />
+              <p>Settings</p>
+            </li>
+          </Link>
+        </div>
       </ul>
 
       <div className="nav-divider" />

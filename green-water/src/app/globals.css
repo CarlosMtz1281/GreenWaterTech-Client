@@ -49,6 +49,16 @@ html{
   font-size: 1.5vw;
   font-weight: 600;
 }
+.nav-tittle{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15vw;
+  height: 5vh;
+  margin-top: 2vh;
+  font-size: 1.5vw;
+  color: white;
+}
 .nav-divider{
   display: flex;
   width: 11vw;
@@ -80,6 +90,16 @@ html{
   margin-top: 1vh;
   font-size: 1.5vw;
   color: white;
+}
+.nav-item.active{
+  font-weight: 600;
+  color: var(--primary);
+  background-color: #DCDBBE;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  transform: translateX(1.5vw);
+  transition: all 0.3s ease;
+  padding: 10px;
 }
 .nav-item p{
   margin-left: 1vw;
