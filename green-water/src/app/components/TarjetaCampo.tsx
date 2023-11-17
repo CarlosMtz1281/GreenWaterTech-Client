@@ -1,3 +1,7 @@
+import Link from "next/link";
+import { useState } from "react";
+import{ useEffect } from "react";
+
 interface TarjetaCampoProps {
     data: {
       // Define the shape of the data object here
@@ -84,6 +88,14 @@ interface TarjetaCampoProps {
     }
   };
   const TarjetaCampo: React.FC<TarjetaCampoProps> = ({ data }) => {
+    const [userID, setUserId] = useState("");
+    var URL;
+    useEffect(() => {
+      URL = window.location.href.split("/")[5];
+      setUserId(URL);
+    }, []);
+    console.log(userID);
+
     return(
         <div style={styles.container}>
           <div style={styles.tittleWrap}>
@@ -117,11 +129,12 @@ interface TarjetaCampoProps {
                     <p>Hum: {data.cuadrantes[3].humedad}</p>
                   </div>
               </div>
-
-
-            <div style={styles.button}>
-              <p>See More</p>
-            </div>
+              <Link href={`/Auth/home/${userID}/campo1`
+                }>
+                <div style={styles.button}>
+                  <p>See More</p>
+                </div>
+              </Link>
         </div>
     )
 }

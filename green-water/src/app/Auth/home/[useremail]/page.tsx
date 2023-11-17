@@ -187,12 +187,12 @@ export default function Home({ params }) {
     console.log(realData);
 
   return (
-    <div>
+    <div >
         <h1 className="home-tittle">Hello {userEmail}</h1>
         <div className="home-cardContainer">
             {testData.length > 0 && testData.map((item, index) => (
-  <TarjetaCampo key={index} data={item} />
-))}
+              <TarjetaCampo key={index} data={item} />
+            ))}
         </div>
 
     </div>
