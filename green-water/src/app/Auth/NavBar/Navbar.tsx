@@ -33,7 +33,6 @@ export default function NavBar() {
     URL = window.location.href.split("/")[5];
     setCurrentPath(URL);
   }, []);
-  console.log(currentPath);
 
   const isPathActive = (path: PathType) => {
     return currentPath === path ? true : false;
