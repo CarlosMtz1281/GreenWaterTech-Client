@@ -1,18 +1,25 @@
-import NavBar from "./Auth/NavBar/Navbar";
-import {
-  Container,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  Stack,
-  Fab,
-} from "@mui/material";
-import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className = "main-container">
+    <div className="landing-page">
+      <div className="landing-circle">
+          <div className="landing-logoWrp">
+            <Image src="/logoGreenWater.png" alt="Green Water Tech Logo" width={200} height={200} />
+          </div>
+          <h1 className="landing-tittle">Welcome To <br/> Green Water Tech</h1>
+          <div className="landing-btnWrp">
+            <a href="/signup" className="landing-btn" style={{fontSize:"1.5vw"}}>Get Started</a>
+            <a href="/loginpage" className="landing-btn">I already have an account</a>
+            </div>
+      </div>
+    </div>
+  );
+}
+
+/*
+
+<main className = "main-container">
       <div
         className="home introduction"
       >
@@ -39,5 +46,6 @@ export default function Home() {
         </Stack>
       </div>
     </main>
-  );
-}
+
+
+*/

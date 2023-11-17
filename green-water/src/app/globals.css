@@ -23,6 +23,71 @@ html{
 
 }
 
+/*LANDING PAGE*/
+
+.landing-page{
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+.landing-circle{
+  background-color: #011E2B;
+  border-radius: 50%;
+  height: 1000px;
+  width: 1000px;
+  margin-top: -100px;
+  margin-left: -200px;
+  position: absolute;}
+
+
+.landing-tittle{
+  display: flex;
+  color: #D9D9D9;
+  font-size: 4vw;
+  margin-top: 5vh;
+  margin-left: 18vw;
+
+}
+
+.landing-logoWrp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13vw;
+  height: 13vw;
+  border-radius: 50%;
+  background-color: #D9D9D9;
+  margin: auto;
+  margin-top: 20vh;
+  margin-left: 20vw;
+}
+
+.landing-btnWrp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  height: 13vw;
+  margin: auto;
+  margin-top: 2vh;
+  margin-left: 17vw;
+}
+.landing-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13vw;
+  height: 5vw;
+  background-color: #10471a;
+  color: #D9D9D9;
+  border-radius: 10px;
+  padding: 5px;
+  margin: auto;
+  font-weight: 600;
+  text-align: center;
+}
+
 
 
 /*NAV BAR*/
