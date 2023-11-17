@@ -3,7 +3,7 @@ from firebase_admin import credentials, db
 
 ## Acceder a la base de datos:
 #Recuperar las credenciales del firebase
-creds = credentials.Certificate('Backend/serviceAccCreds.json')
+creds = credentials.Certificate('serviceAccCreds.json')
 
 #link de la base de datos
 url = 'https://greenwatertech-572bc-default-rtdb.firebaseio.com/'
@@ -65,19 +65,7 @@ def getCuadrantes(campo, cuadrante):
 
 
 #Pruebas
-ref = db.reference('Users')
-ref_child = ref.child('Usuario_prueba3')
-ref_child.set({
-    "campo1":{
-        "cuadrante1":{
-            "planta1":{
-                "Humedad" : 0,
-                "Temperatura" : 0
-            }
-        }
-    }
-})
 
 # .update() solo actualiza keys con values, para cambiar los nombres hay que crear otro nodo y reescribir la info;
 
-updateCuadrante("el campillo", "cuadrante1", "el cuadrantillo")
+print(getUserInfo("Fernando"))
