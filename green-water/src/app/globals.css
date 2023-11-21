@@ -131,7 +131,7 @@ html{
   width: 35vw;
   border-radius: 20px;
   margin: auto;
-  margin-top: 5vh;
+  margin-top: 8vh;
 
 }
 .logIn-btnWrp{
@@ -141,7 +141,7 @@ html{
   width: 30vw;
   height: 13vw;
   margin: auto;
-  margin-top: 2vh;
+  margin-top: 0vh;
 }
 .logIn-btn{
   display: flex;

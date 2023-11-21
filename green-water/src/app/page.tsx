@@ -4,8 +4,7 @@ import Image from "next/image";
 
 import React, { useEffect, useState } from 'react';
 import { Button, TextField, Alert, Stack, Typography, Paper } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
-//import { firebaseConfig } from '../firebase/firebaseconfig';
+import { firebaseConfig } from './firebase/firebaseconfig';
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { set } from 'firebase/database';
@@ -28,8 +27,8 @@ function startLogin(){
 };const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [Error, setError] = useState('');
-    //const app = initializeApp(firebaseConfig);
-    //const auth = getAuth(app);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
     const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(event.target.value);
@@ -79,8 +78,8 @@ function startLogin(){
             </div>
             <h1 className="landing-tittle">Welcome To <br/> Green Water Tech</h1>
             <div className="landing-btnWrp">
-              <a href="/signup" className="landing-btn" style={{fontSize:"1.5vw"}}>Get Started</a>
-              <a onClick={() =>startLogin()}  className="landing-btn">I already have an account</a>
+              <button href="/signup" className="landing-btn" style={{fontSize:"1.5vw"}}>Get Started</button>
+              <button onClick={() =>startLogin()}  className="landing-btn">I already have an account</button>
             </div>
           </div>
         )}
@@ -115,18 +114,16 @@ function startLogin(){
                         onChange={handlePasswordChange}
                     />
 
-                    <Button className = "loginbtn" type="submit">Log In</Button>
+                    <div className="logIn-btnWrp">
+                <button onClick={() => setLogin(false)} className="logIn-btn">Go Back</button>
 
+                <button type="submit" className="logIn-btn">Login</button>
+                </div>
                     {Error !== '' && <Alert severity="error">{Error}</Alert>}
                     </Stack>
 
                 </form>
-                <div className="logIn-btnWrp">
-                <a onClick={() => setLogin(false)} className="logIn-btn">Go Back</a>
 
-                <a href="/loginpage" className="logIn-btn" >Login</a>
-
-                </div>
             </div>
             </ThemeProvider>
 
