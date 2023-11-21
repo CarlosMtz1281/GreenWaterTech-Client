@@ -33,7 +33,7 @@ import TarjetaCuadrante from "@/app/components/TarjetaCuadrante"
 export default function Campos(){
     return(
         <div >
-            <h1 className="campo-tittle">Campos</h1>
+            <h1 className="campo-tittle">Fields</h1>
             <div className="campo-container">
                     {testData.length > 0 && testData.map((item, index) => (
                 <TarjetaCuadrante key={index} data={item} />
