@@ -43,7 +43,7 @@ html{
 }
 
 .landing-circle.active{
-  margin-left: 200px; /* Add this line */
+  margin-left: 15vw; /* Add this line */
   transition: all 0.5s ease;
   text-align: center;
 }
