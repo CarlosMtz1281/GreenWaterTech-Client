@@ -1,4 +1,5 @@
 from flask import Flask, request, session
+import logging
 import os
 import random
 from backFirebase import getCampos, getCuadrantes, getUserInfo, updateUser, updateCampo, updateCuadrante, updateCuadranteInfo
@@ -7,6 +8,8 @@ from flask_cors import CORS
 
 app = Flask(__name__, static_folder="build")
 app.secret_key = "FerEsLaVergaYeaBoy!"
+app.logger.setLevel(logging.DEBUG)
+
 
 CORS(app, origins=["https://gwt-back.uc.r.appspot.com", "http://localhost:8000"])
 
@@ -14,11 +17,8 @@ CORS(app, origins=["https://gwt-back.uc.r.appspot.com", "http://localhost:8000"]
 @app.route('/api/login', methods=['GET'])
 def login():
     user = request.args.get('user')
+    session.clear()
     session['user'] = user
-    session['temp'] = 0
-    session['tempCount'] = 0
-    session['hum'] = 0
-    session['humCount'] = 0
     return "Logged in"
 
 
@@ -100,7 +100,8 @@ def node_temp():
     data = request.get_json()
     temp = data.get('temp')
     rute = data.get('rute')
-    getTemp(temp, rute, session)
+    average = data.get('averageTemp')
+    getTemp(temp, rute, average)
     return "Temp received"
 
 @app.route('/node/Hum', methods=['POST'])
@@ -108,7 +109,8 @@ def node_hum():
     data = request.get_json()
     hum = data.get('hum')
     rute = data.get('rute')
-    getHum(hum, rute, session)
+    average = data.get('averageHum')
+    getHum(hum, rute, average)
     return "Hum received"
 
 if __name__ == '__main__':
