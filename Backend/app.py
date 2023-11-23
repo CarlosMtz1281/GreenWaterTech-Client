@@ -58,14 +58,15 @@ def get_cuadrantes():
     return response
 
 #Updates
-@app.route('/api/updateUser', methods=['POST'])
+@app.route('/api/updateUser', methods=['GET'])
 def update_user():
     user = session['user']
     userNew = request.args.get('userNew')
     updateUser(user, userNew)
+    session['user'] = userNew
     return "Updated user"
 
-@app.route('/api/updateCampo', methods=['POST'])
+@app.route('/api/updateCampo', methods=['GET'])
 def update_campo():
     user = session['user']
     campo = request.args.get('campo')
@@ -73,7 +74,7 @@ def update_campo():
     updateCampo(user, campo, campoNew)
     return "Updated campo"
 
-@app.route('/api/updateCuadrante', methods=['POST'])
+@app.route('/api/updateCuadrante', methods=['GET'])
 def update_cuadrante():
     user = session['user']
     campo = request.args.get('campo')
@@ -82,7 +83,7 @@ def update_cuadrante():
     updateCuadrante(user, campo, cuadrante, cuadranteNew)
     return "Updated cuadrante"
 
-@app.route('/api/updateCuadranteInfo', methods=['POST'])
+@app.route('/api/updateCuadranteInfo', methods=['GET'])
 def update_cuadranteInfo():
     user = session['user']
     campo = request.args.get('campo')
