@@ -1,4 +1,8 @@
+"use client";
 import TarjetaCuadrante from "@/app/components/TarjetaCuadrante"
+import { Container, Tab, Tabs, Paper } from '@mui/material';
+import { useState } from 'react';
+
     const testData = [
         {
             id: 1,
@@ -31,17 +35,46 @@ import TarjetaCuadrante from "@/app/components/TarjetaCuadrante"
     ]
 
 export default function Campos(){
-    return(
-        <div >
+    const [tabValue, setTabValue] = useState('general');
+
+    const handleChangeTab = (event, newValue) => {
+      setTabValue(newValue);
+    };
+    return (
+        <div>
             <h1 className="campo-tittle">Fields</h1>
-            <div className="campo-container">
-                    {testData.length > 0 && testData.map((item, index) => (
-                <TarjetaCuadrante key={index} data={item} />
-                ))}
+            <div className="campo-main-container">
 
 
+        <Container maxWidth="lg"> {/* Adjust the maxWidth as needed */}
+            <Tabs
+              value={tabValue}
+              onChange={handleChangeTab}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+            >
+              <Tab label="General Data" value="general" />
+              <Tab label="Map" value="map" />
+            </Tabs>
+
+            <div className="tab-content">
+              {tabValue === 'general' && (
+                <div className="campo-generalInfo">
+                  {/* Your general data content goes here */}
+                </div>
+              )}
+              {tabValue === 'map' && (
+                <div className="cuadrante-grid">
+                  {testData.length > 0 &&
+                    testData.map((item) => (
+                      <TarjetaCuadrante key={item.id} data={item} />
+                    ))}
+                </div>
+              )}
             </div>
-
+        </Container>
         </div>
-    )
-}
+        </div>
+      );
+    };
