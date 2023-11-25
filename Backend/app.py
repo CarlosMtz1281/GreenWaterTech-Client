@@ -11,7 +11,7 @@ app.secret_key = "FerEsLaVergaYeaBoy!"
 app.logger.setLevel(logging.DEBUG)
 
 
-CORS(app, origins=["https://gwt-back.uc.r.appspot.com", "http://localhost:8000"])
+CORS(app, origins=["https://gwt-back.uc.r.appspot.com", "http://localhost:8000"], supports_credentials=True)
 
 #Session info
 @app.route('/api/login', methods=['GET'])
@@ -24,7 +24,7 @@ def login():
 
 @app.route('/test', methods=['GET'])
 def test():
-    user = session['user']
+    user = request.args.get('user')
     rute = f'{user}/campo/cuadrante/planta1'
     # Simulate temperature data
     for i in range(100):
@@ -36,14 +36,14 @@ def test():
 #Gets
 @app.route('/api/getUser', methods=['GET'])
 def get_user():
-    user = session['user']
+    user = request.args.get('user')
     response = getUserInfo(user)
     return response
 
 @app.route('/api/getCampos', methods=['GET'])
 def get_campos():
     #if request.is_json
-    user = session['user']
+    user = request.args.get('user')
     campo = request.args.get('campo')
     response = getCampos(user, campo)
     return response
@@ -51,7 +51,7 @@ def get_campos():
 @app.route('/api/getCuadrantes', methods=['GET'])
 def get_cuadrantes():
     #if request.is_json
-    user = session['user']
+    user = request.args.get('user')
     campo = request.args.get('campo')
     cuadrante = request.args.get('cuadrante')
     response = getCuadrantes(user, campo, cuadrante)
@@ -60,7 +60,7 @@ def get_cuadrantes():
 #Updates
 @app.route('/api/updateUser', methods=['GET'])
 def update_user():
-    user = session['user']
+    user = request.args.get('user')
     userNew = request.args.get('userNew')
     updateUser(user, userNew)
     session['user'] = userNew
@@ -68,7 +68,7 @@ def update_user():
 
 @app.route('/api/updateCampo', methods=['GET'])
 def update_campo():
-    user = session['user']
+    user = request.args.get('user')
     campo = request.args.get('campo')
     campoNew = request.args.get('campoNew')
     updateCampo(user, campo, campoNew)
@@ -76,7 +76,7 @@ def update_campo():
 
 @app.route('/api/updateCuadrante', methods=['GET'])
 def update_cuadrante():
-    user = session['user']
+    user = request.args.get('user')
     campo = request.args.get('campo')
     cuadrante = request.args.get('cuadrante')
     cuadranteNew = request.args.get('cuadranteNew')
@@ -85,7 +85,7 @@ def update_cuadrante():
 
 @app.route('/api/updateCuadranteInfo', methods=['GET'])
 def update_cuadranteInfo():
-    user = session['user']
+    user = request.args.get('user')
     campo = request.args.get('campo')
     cuadrante = request.args.get('cuadrante')
     planta = request.args.get('planta')
