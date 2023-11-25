@@ -1,17 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, use } from "react";
-import {
-  Container,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  Card,
-  CircularProgress,
-  Stack,
-  Box,
-} from "@mui/material";
+
 import { firebaseConfig } from "../../../firebase/firebaseconfig";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -20,6 +10,10 @@ import NavBar from "../../NavBar/Navbar";
 
 import TarjetaCampo from "@/app/components/TarjetaCampo";
 import { set } from "firebase/database";
+
+type HomeProps = {
+  params: any; // replace 'any' with the actual type of 'params'
+};
 
 export default function Home({ params }) {
   const [realData, setRealData] = useState<any>([]);
@@ -80,6 +74,19 @@ export default function Home({ params }) {
     }
 
   }, [userKey]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`https://gwt-back.uc.r.appspot.com/api/login?user=${userKey}`);
+      console.log(response)
+    } catch (error) {
+      // Handle any errors that occur during the request
+      console.error(error);
+    }
+
+  };
+
+  fetchData();
 
   return (
     <div>

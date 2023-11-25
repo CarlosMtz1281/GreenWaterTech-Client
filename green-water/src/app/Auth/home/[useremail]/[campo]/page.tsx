@@ -40,6 +40,22 @@ export default function Campos(){
     const handleChangeTab = (event, newValue) => {
       setTabValue(newValue);
     };
+    const fetchData = async () => {
+        try {
+          const response = await fetch(`https://gwt-back.uc.r.appspot.com/api/getCampos?campo=campo1`);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          // Handle any errors that occur during the request
+          console.error(error);
+        }
+      };
+
+      fetchData().then(data => console.log(data));
+
     return (
         <div>
             <h1 className="campo-tittle">Fields</h1>
