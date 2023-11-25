@@ -41,10 +41,9 @@ def updateUser(user, userNew):
 def updateCampo(user, campo, campoNew):
     #Cambiar nombre campo
     campo = db.reference(f"Users/{user}/{campo}")
-    dataC = campo.get()
-    campoUpdated = db.reference(f"Users/{user}/{campoNew}")
-    campoUpdated.set(dataC)
-    campo.delete()
+    campo.update(
+        {'name': campoNew}
+    )
 
 def updateCuadrante(user, campo, cuadrante, cuadranteNew):
     cuadrante = db.reference(f"Users/{user}/{campo}/{cuadrante}")
@@ -54,10 +53,6 @@ def updateCuadrante(user, campo, cuadrante, cuadranteNew):
     cuadrante.delete()
     
 
-def updateCuadranteInfo(user, campo, cuadrante, planta, temp, hum):
+def updateCuadranteInfo(user, campo, cuadrante, planta):
     campo = db.reference(f"Users/{user}/{campo}/{cuadrante}")
     planta = campo.child(planta)
-    planta.update({
-        "Humedad" : hum,
-        "Temperatura" : temp
-    })

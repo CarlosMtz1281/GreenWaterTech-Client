@@ -89,14 +89,12 @@ def update_cuadranteInfo():
     campo = request.args.get('campo')
     cuadrante = request.args.get('cuadrante')
     planta = request.args.get('planta')
-    temp = request.args.get('temp')
-    hum = request.args.get('hum')
-    updateCuadranteInfo(user, campo, cuadrante, planta, temp, hum)
+    updateCuadranteInfo(user, campo, cuadrante, planta)
     return "Updated cuadrante info"
 
 
 ##NodeMCU
-@app.route('/node/Temp', methods=['POST'])
+@app.route('/node/Temp', methods=['PATCH'])
 def node_temp():
     data = request.get_json()
     temp = data.get('temp')
@@ -105,7 +103,7 @@ def node_temp():
     getTemp(temp, rute, average)
     return "Temp received"
 
-@app.route('/node/Hum', methods=['POST'])
+@app.route('/node/Hum', methods=['PATCH'])
 def node_hum():
     data = request.get_json()
     hum = data.get('hum')
