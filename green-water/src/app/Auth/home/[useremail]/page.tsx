@@ -25,68 +25,69 @@ export default function Home({ params }) {
   const [userKey, setUserKey] = useState<string>("");
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
+
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = doc(db, "users", userEmail); // Use the correct collection name and document id
-      const docSnap = await getDoc(docRef);
+      const docRef = doc(db, "users", userEmail);
 
-      if (docSnap.exists()) {
-        setUser(docSnap.data());
-        if (user) {
-          setUserKey(user.email);
+      try {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setUser(docSnap.data());
+        } else {
+          setUser(null);
         }
-      } else {
-        // Handle the case where the document does not exist
-        setUser(null);
+      } catch (error) {
+        console.error("Error fetching user document:", error);
       }
     };
 
     fetchData();
   }, [userEmail]);
 
-  // Deconstruct document data
   useEffect(() => {
     if (user) {
       setUserKey(user.email);
     }
   }, [user]);
 
-  // Retrieve user data from Realtime Database
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `https://greenwatertech-572bc-default-rtdb.firebaseio.com/Users/${userKey}/.json`
-      );
+      if (userKey) {
+        try {
+          const response = await fetch(
+            `https://gwt-back.uc.r.appspot.com//api/getUser?user=-Nj8Y4gCCGdasz5SxLdp`,
+            {
+              credentials: "include",
+            }
+          );
 
-      const data = await response.json();
-      // Make data into an array
-      const dataArray = [];
-      for (const key in data) {
-        dataArray.push(data[key]);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          const dataArray = Object.values(data);
+          const formattedData = dataArray.slice(0, 4); // Get the first 4 items
+          setRealData(formattedData);
+
+          setIsLoaded(true);
+        } catch (error) {
+          console.error("Error fetching login data:", error);
+        }
       }
-      setRealData(dataArray);
-
-      setIsLoaded(true);
     };
 
-    if (userKey) {
-      fetchData();
-    }
-
+    fetchData();
   }, [userKey]);
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`https://gwt-back.uc.r.appspot.com/api/login?user=${userKey}`);
-      console.log(response)
-    } catch (error) {
-      // Handle any errors that occur during the request
-      console.error(error);
-    }
+  console.log(realData);
 
-  };
 
-  fetchData();
+
+
+
 
   return (
     <div>

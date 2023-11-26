@@ -1,18 +1,30 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useEffect } from "react";
+
+
 interface Plant {
   Humedad: number;
-  Nombre: string;
+  Humedad_Tierra: number;
+  Humedad_Tierra_lastHour: number;
+  Humedad_lastHour: number;
   Temperatura: number;
+  Temperatura_lastHour: number;
 }
 
 interface Cuadrante {
-  [key: string]: Plant;
+  planta1: Plant;
 }
 
 interface Campo {
-  [key: string]: Cuadrante;
+  Coordenates: string;
+  Locaiton: string;
+  cuadrante1: Cuadrante;
+  cuadrante2: Cuadrante;
+  cuadrante3: Cuadrante;
+  cuadrante4: Cuadrante;
+  idUB: number;
+  name: string;
 }
 
 interface TarjetaCampoProps {
@@ -30,7 +42,7 @@ const styles = {
   },
   title: {
     display: 'flex',
-    fontSize: '3vw',
+    fontSize: '1.7vw',
     fontWeight: '600',
     margin: '1vw',
     marginLeft: '2vw',
@@ -38,9 +50,9 @@ const styles = {
   subtitle: {
     display: 'flex',
     fontSize: '1rem',
-    fontWeight: 'bold',
+    fontWeight: '400',
     marginTop: '-1vw',
-    marginLeft: '2.2vw',
+    marginLeft: '2vw',
   },
   tittleWrap: {
    marginTop: "3vh",
@@ -95,6 +107,7 @@ const styles = {
   }
 };
 
+
 const TarjetaCampo: React.FC<TarjetaCampoProps> = ({ data }) => {
   const [userID, setUserId] = useState("");
   var URL;
@@ -107,35 +120,33 @@ const TarjetaCampo: React.FC<TarjetaCampoProps> = ({ data }) => {
   return (
     <div style={styles.container}>
       <div style={styles.tittleWrap}>
-        <h2 style={styles.title}>Campo</h2>
-        <h2 style={styles.subtitle}>id</h2>
+        <h2 style={styles.title}>Campo {data.name}</h2>
+        <h4 style={styles.subtitle}>{data.Locaiton}</h4>
       </div>
       <div style={styles.divisor} />
 
       <div style={styles.cuadranteSection}>
-
-      <div style={styles.cuadrantesGrid}>
-        {Object.keys(data).map((cuadrante) => (
-          <div style={styles.cuadranteWrp}>
-            <h3>{cuadrante}</h3>
-            {Object.keys(data[cuadrante]).map((planta) => (
-              <div>
-                <h4>{planta}</h4>
-                <h4>Hum: {data[cuadrante][planta].Humedad}</h4>
-                <h4>Temp: {data[cuadrante][planta].Temperatura}</h4>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+        <div style={styles.cuadrantesGrid}>
+          {Object.keys(data).filter(key => key.startsWith('cuadrante')).map((cuadrante) => (
+            <div style={styles.cuadranteWrp}>
+              <h3>{cuadrante}</h3>
+              {Object.keys(data[cuadrante]).map((planta) => (
+                <div>
+                  <h4>{planta}</h4>
+                  <h4>Hum: {data[cuadrante][planta].Humedad}</h4>
+                  <h4>Temp: {data[cuadrante][planta].Temperatura}</h4>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       <Link href={`/Auth/home/${userID}/campo1`}>
-          <div style={styles.button}>
-              <p>See More</p>
-          </div>
+        <div style={styles.button}>
+          <p>See More</p>
+        </div>
       </Link>
-
     </div>
   );
 };

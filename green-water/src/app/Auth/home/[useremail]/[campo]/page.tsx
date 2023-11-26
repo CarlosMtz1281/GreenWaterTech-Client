@@ -40,6 +40,7 @@ export default function Campos(){
     const handleChangeTab = (event, newValue) => {
       setTabValue(newValue);
     };
+
     const fetchData = async () => {
         try {
           const response = await fetch(`https://gwt-back.uc.r.appspot.com/api/getCampos?campo=campo1`);
@@ -77,7 +78,30 @@ export default function Campos(){
             <div className="tab-content">
               {tabValue === 'general' && (
                 <div className="campo-generalInfo">
-                  {/* Your general data content goes here */}
+                    <div className="campo-gi-header">
+                        <h1>Campo el cuchillo</h1>
+                        <h3>Santaigo N.L Mexico</h3>
+                        <p>Latitude: xxxxxxxxx, Longitude: xxxxxxxx</p>
+                    </div>
+                    <div className="weather-container">
+                        <div className="weather-info">
+                            <h2>Weather</h2>
+                            <h3>Temperature: 20°</h3>
+                            <h3>Humidity: 50%</h3>
+                        </div>
+                        <div className="weather-image">
+                            <img src="/weather.png" alt="weather"/>
+                        </div>
+                    </div>
+
+                <div className="data-stats">
+                    <p> GRAPHS AND STUFF</p>
+                </div>
+
+                <div className="recomendation">
+
+                </div>
+
                 </div>
               )}
               {tabValue === 'map' && (
