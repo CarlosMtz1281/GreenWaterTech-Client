@@ -1,17 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, use } from "react";
-import {
-  Container,
-  Grid,
-  TextField,
-  Button,
-  Typography,
-  Card,
-  CircularProgress,
-  Stack,
-  Box,
-} from "@mui/material";
+
 import { firebaseConfig } from "../../../firebase/firebaseconfig";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -21,8 +11,13 @@ import NavBar from "../../NavBar/Navbar";
 import TarjetaCampo from "@/app/components/TarjetaCampo";
 import { set } from "firebase/database";
 
+type HomeProps = {
+  params: any; // replace 'any' with the actual type of 'params'
+};
+
 export default function Home({ params }) {
   const [realData, setRealData] = useState<any>([]);
+  const [altData, setAltData] = useState<any>([]);
   const userEmail = decodeURIComponent(params.useremail);
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -31,59 +26,76 @@ export default function Home({ params }) {
   const [userKey, setUserKey] = useState<string>("");
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
+
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = doc(db, "users", userEmail); // Use the correct collection name and document id
-      const docSnap = await getDoc(docRef);
+      const docRef = doc(db, "users", userEmail);
 
-      if (docSnap.exists()) {
-        setUser(docSnap.data());
-        if (user) {
-          setUserKey(user.email);
+      try {
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          setUser(docSnap.data());
+        } else {
+          setUser(null);
         }
-      } else {
-        // Handle the case where the document does not exist
-        setUser(null);
+      } catch (error) {
+        console.error("Error fetching user document:", error);
       }
     };
 
     fetchData();
   }, [userEmail]);
 
-  // Deconstruct document data
   useEffect(() => {
     if (user) {
       setUserKey(user.email);
     }
   }, [user]);
 
-  // Retrieve user data from Realtime Database
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(
-        `https://greenwatertech-572bc-default-rtdb.firebaseio.com/Users/${userKey}/.json`
-      );
+      if (userKey) {
+        try {
+          const response = await fetch(
+            `https://gwt-back.uc.r.appspot.com//api/getUser?user=-Nj8Y4gCCGdasz5SxLdp`,
+            {
+              credentials: "include",
+            }
+          );
 
-      const data = await response.json();
-      // Make data into an array
-      const dataArray = [];
-      for (const key in data) {
-        dataArray.push(data[key]);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          const dataArray = Object.values(data);
+          const formattedData = dataArray.slice(0, 4); // Get the first 4 items
+          const altData = dataArray.slice(4); // Get the remaining items
+          setRealData(formattedData);
+          setAltData(altData); // Assuming you have a state variable altData
+
+          setIsLoaded(true);
+        } catch (error) {
+          console.error("Error fetching login data:", error);
+        }
       }
-      setRealData(dataArray);
-
-      setIsLoaded(true);
     };
 
-    if (userKey) {
-      fetchData();
-    }
-
+    fetchData();
   }, [userKey]);
+
+  console.log(realData);
+  console.log(altData);
+  console.log(userKey);
+
+
+
+
 
   return (
     <div>
-      <h1 className="home-tittle">Hello {userEmail}</h1>
+      <h1 className="home-tittle">Hello {altData[0]}</h1>
       <div className="home-cardContainer">
         {isLoaded && Array.isArray(realData) &&
           realData.map((item, index) => (

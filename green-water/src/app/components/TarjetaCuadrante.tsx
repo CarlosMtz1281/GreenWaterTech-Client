@@ -2,11 +2,14 @@ import React from 'react';
 
 interface Props {
     data: {
-        id: number,
-        name: string,
-        temperatura: number,
-        humedad: number,
-        plant: string
+        planta1: {
+            Humedad: number,
+            Humedad_Tierra: number,
+            Humedad_Tierra_lastHour: number,
+            Humedad_lastHour: number,
+            Temperatura: number,
+            Temperatura_lastHour: number
+        }
     };
 }
 
@@ -43,14 +46,16 @@ const styles = {
         fontSize: '14px'
     }
 }
-
 const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
+    const { planta1 } = data;
     return (
         <div style={styles.container}>
-            <p style={styles.id}>Name: {data.name}</p>
-            <p style={styles.plant}>Plant: {data.plant}</p>
-            <p style={styles.humidity}>Humidity: {data.humedad}%</p>
-            <p style={styles.temperature}>Temperature: {data.temperatura}°C</p>
+            <p style={styles.humidity}>Humedad: {planta1.Humedad}%</p>
+            <p style={styles.humidity}>Humedad Tierra: {planta1.Humedad_Tierra}%</p>
+            <p style={styles.humidity}>Humedad Tierra Last Hour: {planta1.Humedad_Tierra_lastHour}%</p>
+            <p style={styles.humidity}>Humedad Last Hour: {planta1.Humedad_lastHour}%</p>
+            <p style={styles.temperature}>Temperature: {planta1.Temperatura}°C</p>
+            <p style={styles.temperature}>Temperature Last Hour: {planta1.Temperatura_lastHour}°C</p>
         </div>
     );
 };
