@@ -1,4 +1,6 @@
 import React from 'react';
+import { Grid } from '@mui/material';
+import RoundedBarChart from './BorderedGraph';
 
 interface Props {
     data: {
@@ -14,6 +16,7 @@ interface Props {
 }
 
 const styles = {
+
     container: {
         display: 'flex',
         flexDirection: 'column',
@@ -26,8 +29,7 @@ const styles = {
         width: '100%',
         maxWidth: '30vw',
         height: '25vh',
-        margin: 'auto'
-
+        margin: '10px',
     },
     id: {
         fontSize: '18px',
@@ -48,14 +50,49 @@ const styles = {
 }
 const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
     const { planta1 } = data;
+
     return (
         <div style={styles.container}>
+            <Grid container>
+            
+            <Grid item xs={5}>
             <p style={styles.humidity}>Humedad: {planta1.Humedad}%</p>
             <p style={styles.humidity}>Humedad Tierra: {planta1.Humedad_Tierra}%</p>
             <p style={styles.humidity}>Humedad Tierra Last Hour: {planta1.Humedad_Tierra_lastHour}%</p>
             <p style={styles.humidity}>Humedad Last Hour: {planta1.Humedad_lastHour}%</p>
             <p style={styles.temperature}>Temperature: {planta1.Temperatura}°C</p>
             <p style={styles.temperature}>Temperature Last Hour: {planta1.Temperatura_lastHour}°C</p>
+            </Grid>
+
+
+            <Grid item xs={7}>
+            <RoundedBarChart data={{
+                labels: ['Humedad', 'Humedad Tierra', 'Humedad Tierra Last Hour', 'Humedad Last Hour', 'Temperature', 'Temperature Last Hour'],
+                datasets: [{
+                    label: 'Values',
+                    data: [planta1.Humedad, planta1.Humedad_Tierra, planta1.Humedad_Tierra_lastHour, planta1.Humedad_lastHour, planta1.Temperatura, planta1.Temperatura_lastHour],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 159, 64, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 206, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 159, 64)'
+                    ],
+                    borderWidth: 1,
+                }]
+            }} />      
+            </Grid>      
+
+            </Grid>
         </div>
     );
 };

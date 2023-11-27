@@ -1,39 +1,10 @@
 "use client";
 import TarjetaCuadrante from "@/app/components/TarjetaCuadrante";
-import { Container, Tab, Tabs, Paper } from "@mui/material";
+import { Container, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
+import RoundedBarChart from "@/app/components/BorderedGraph";
 
-const testData = [
-  {
-    id: 1,
-    name: "Cuadrante 1",
-    temperatura: 20,
-    humedad: 50,
-    plant: "Tomatoes",
-  },
-  {
-    id: 2,
-    name: "Cuadrante 2",
-    temperatura: 20,
-    humedad: 50,
-    plant: "Peppers",
-  },
-  {
-    id: 3,
-    name: "Cuadrante 3",
-    temperatura: 20,
-    humedad: 50,
-    plant: "Lettuce",
-  },
-  {
-    id: 4,
-    name: "Cuadrante 4",
-    temperatura: 20,
-    humedad: 50,
-    plant: "Carrots",
-  },
-];
 
 export default function Campos() {
   const [tabValue, setTabValue] = useState("general");
@@ -68,7 +39,7 @@ export default function Campos() {
         // Get the current URL
         const url = window.location.pathname;
         // Extract the campo number from the URL
-        const campoNumber = parseInt(url.split('campo')[1]);
+        const campoNumber = parseInt(url.split("campo")[1]);
 
         // If the campo number is valid, update realData to only contain the corresponding element
         if (!isNaN(campoNumber) && campoNumber >= 1 && campoNumber <= 4) {
@@ -127,19 +98,49 @@ export default function Campos() {
 
                 <div className="data-stats">
                   <p> GRAPHS AND STUFF</p>
+
+                  <RoundedBarChart data={{
+                labels: ['Humedad', 'Humedad Tierra', 'Humedad Tierra Last Hour', 'Humedad Last Hour', 'Temperature', 'Temperature Last Hour'],
+                datasets: [{
+                    label: 'Values',
+                    data: [ 20, 30, 40, 50, 60, 70],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 159, 64, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgb(255, 99, 132)',
+                        'rgb(54, 162, 235)',
+                        'rgb(255, 206, 86)',
+                        'rgb(75, 192, 192)',
+                        'rgb(153, 102, 255)',
+                        'rgb(255, 159, 64)'
+                    ],
+                    borderWidth: 1,
+                }]
+            }} /> 
                 </div>
 
                 <div className="recomendation"></div>
               </div>
             )}
             {tabValue === "map" && (
-  <div className="cuadrante-grid">
-    {realData.length > 0 &&
-      ["cuadrante1", "cuadrante2", "cuadrante3", "cuadrante4"].map((cuadrante, index) => (
-        <TarjetaCuadrante key={index} data={realData[0][cuadrante]} />
-      ))}
-  </div>
-)}
+              <div className="cuadrante-grid">
+                {realData.length > 0 &&
+                  ["cuadrante1", "cuadrante2", "cuadrante3", "cuadrante4"].map(
+                    (cuadrante, index) => (
+                      <TarjetaCuadrante
+                        key={index}
+                        data={realData[0][cuadrante]}
+                      />
+                    )
+                  )}
+              </div>
+            )}
           </div>
         </Container>
       </div>
