@@ -17,6 +17,7 @@ type HomeProps = {
 
 export default function Home({ params }) {
   const [realData, setRealData] = useState<any>([]);
+  const [altData, setAltData] = useState<any>([]);
   const userEmail = decodeURIComponent(params.useremail);
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -70,7 +71,9 @@ export default function Home({ params }) {
           const data = await response.json();
           const dataArray = Object.values(data);
           const formattedData = dataArray.slice(0, 4); // Get the first 4 items
+          const altData = dataArray.slice(4); // Get the remaining items
           setRealData(formattedData);
+          setAltData(altData); // Assuming you have a state variable altData
 
           setIsLoaded(true);
         } catch (error) {
@@ -83,7 +86,8 @@ export default function Home({ params }) {
   }, [userKey]);
 
   console.log(realData);
-
+  console.log(altData);
+  console.log(userKey);
 
 
 
@@ -91,7 +95,7 @@ export default function Home({ params }) {
 
   return (
     <div>
-      <h1 className="home-tittle">Hello {userEmail}</h1>
+      <h1 className="home-tittle">Hello {altData[0]}</h1>
       <div className="home-cardContainer">
         {isLoaded && Array.isArray(realData) &&
           realData.map((item, index) => (
