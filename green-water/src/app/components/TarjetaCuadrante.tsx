@@ -19,7 +19,7 @@ const styles = {
 
     container: {
         display: 'flex',
-        flexDirection: 'column',
+        FlexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#f5f5f5',
