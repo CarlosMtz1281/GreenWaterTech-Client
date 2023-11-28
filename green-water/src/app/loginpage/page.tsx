@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { Button, TextField, Alert, Stack, Typography, Paper } from '@mui/material';
-import GoogleIcon from '@mui/icons-material/Google';
 import { firebaseConfig } from '../firebase/firebaseconfig';
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
