@@ -47,6 +47,10 @@ const styles = {
     temperature: {
         fontSize: '12px'
     },
+    txtWrap: {
+        marginTop: '4.5vh',
+    },
+
     graphfooter: {
         fontSize: '0.5vh',
     }
@@ -58,14 +62,14 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
     return (
         <div style={styles.container}>
             <Grid container>
-            
+
             <Grid item xs={6}>
                 <div
-                style={{paddingTop: "15px"}}>
-                    <p style={styles.humidity}>Humedad: {planta1.Humedad}%</p>
-                    <p style={styles.humidity}>Humedad Tierra: {planta1.Humedad_Tierra}%</p>
-                    <p style={styles.humidity}>Humedad Tierra Last Hour: {planta1.Humedad_Tierra_lastHour}%</p>
-                    <p style={styles.humidity}>Humedad Last Hour: {planta1.Humedad_lastHour}%</p>
+                style={styles.txtWrap}>
+                    <p style={styles.humidity}>Ambient Humidity: {planta1.Humedad}%</p>
+                    <p style={styles.humidity}>Soil Humidity: {planta1.Humedad_Tierra}%</p>
+                    <p style={styles.humidity}>Ambient Humidity Last Hour: {planta1.Humedad_lastHour}%</p>
+                    <p style={styles.humidity}>Soil Humidity Last Hour: {planta1.Humedad_Tierra_lastHour}%</p>
                     <p style={styles.temperature}>Temperature: {planta1.Temperatura}°C</p>
                     <p style={styles.temperature}>Temperature Last Hour: {planta1.Temperatura_lastHour}°C</p>
                 </div>
@@ -99,7 +103,7 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
                 }]
             }} />
 
-            </Grid>      
+            </Grid>
 
             </Grid>
         </div>

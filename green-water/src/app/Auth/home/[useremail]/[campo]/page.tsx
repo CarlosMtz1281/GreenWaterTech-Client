@@ -329,7 +329,7 @@ useEffect(() => {
                 <div className="gi-topRow">
                   <div className="campo-gi-header">
                     <div>
-                      <h1 className="gi-campoName">Campo el cuchillo</h1>
+                      <h1 className="gi-campoName">Campo el Cuchillo</h1>
                       <h3 className="gi-location">Santaigo N.L Mexico</h3>
                       <p>Latitude: 25.5626, Longitude: -100.2285</p>
                     </div>
@@ -357,7 +357,7 @@ useEffect(() => {
 
                   <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax} label1 = {"Minimum temperatures"} label2 = {"Maximum temperatures"} />
 
-                  <BarGraph dataset1={humidity} label1={"Soil humidity"} /> 
+                  <BarGraph dataset1={humidity} label1={"Soil humidity"} />
 
                 </div>
 
@@ -372,19 +372,19 @@ useEffect(() => {
                   <TarjetaCuadrante key={index} data={realData[0][cuadrante]} />
                 ))}
             </div>
-            
+
                 <footer className="cuadrante-footer">
                   <div className="footer-column">
-                    <small><strong>HA:</strong> Humedad ambiente</small>
-                    <small><strong>HT:</strong> Humedad tierra</small>
+                    <small><strong>AH:</strong> Ambient Humidity</small>
+                    <small><strong>SH:</strong> Soil Humidity</small>
                   </div>
                   <div className="footer-column">
-                    <small><strong>HT LH:</strong> Humedad tierra ultima hora</small>
-                    <small><strong>HA LT:</strong> Humedad ambiente ultima hora</small>
+                    <small><strong>AH LH:</strong> Soil Humidity last hour</small>
+                    <small><strong>SH LT:</strong> Ambient Humidity last hour</small>
                   </div>
                   <div className="footer-column">
-                    <small><strong>T:</strong> Temperatura</small>
-                    <small><strong>T LH:</strong> Temperatura ultima hora</small>
+                    <small><strong>T:</strong> Temperature</small>
+                    <small><strong>T LH:</strong> Temperature last hour</small>
                   </div>
                 </footer>
               </div>
