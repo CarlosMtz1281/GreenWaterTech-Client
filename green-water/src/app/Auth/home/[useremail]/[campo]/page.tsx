@@ -328,7 +328,7 @@ useEffect(() => {
                     <div className="weather-container">
                       <div className="weather-info">
                         <h2>Weather: {weatherTest[0].DailyForecasts[0].Day.IconPhrase}, {weatherTest[0].DailyForecasts[0].Day.PrecipitationIntensity} {weatherTest[0].DailyForecasts[0].Day.PrecipitationType} </h2>
-                        <h3>Temperature: Maximun:{temperaturesMax[0]} , Minimum:{temperaturesMin[0]}°</h3>
+                        <h3>Temperature: Maximum:{temperaturesMax[0]} , Minimum:{temperaturesMin[0]}°</h3>
                         <h3>Humidity: 50%</h3>
                       </div>
                       <div className="weather-image">
@@ -347,9 +347,9 @@ useEffect(() => {
 
                 <div className="data-stats">
 
-                  <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax} label1 = {"Temperaturas mínimas"} label2 = {"Temperaturas máximas"} />
+                  <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax} label1 = {"Minimum temperatures"} label2 = {"Maximum temperatures"} />
 
-                  <BarGraph dataset1={temperaturesMin} dataset2={temperaturesMax} label1={"Temperaturas mínimas"} label2={"Temperaturas máximas"} /> 
+                  <BarGraph dataset1={temperaturesMin} dataset2={temperaturesMax} label1={"Minimum temperatures"} label2={"Maximum temperatures"} /> 
 
                 </div>
 
@@ -357,12 +357,29 @@ useEffect(() => {
               </div>
             )}
             {tabValue === "map" && (
+              <div>
             <div className="cuadrante-grid">
               {realData.length > 0 &&
                 ["cuadrante1", "cuadrante2", "cuadrante3", "cuadrante4"].map((cuadrante, index) => (
                   <TarjetaCuadrante key={index} data={realData[0][cuadrante]} />
                 ))}
             </div>
+            
+                <footer className="cuadrante-footer">
+                  <div className="footer-column">
+                    <small><strong>HA:</strong> Humedad ambiente</small>
+                    <small><strong>HT:</strong> Humedad tierra</small>
+                  </div>
+                  <div className="footer-column">
+                    <small><strong>HT LH:</strong> Humedad tierra ultima hora</small>
+                    <small><strong>HA LT:</strong> Humedad ambiente ultima hora</small>
+                  </div>
+                  <div className="footer-column">
+                    <small><strong>T:</strong> Temperatura</small>
+                    <small><strong>T LH:</strong> Temperatura ultima hora</small>
+                  </div>
+                </footer>
+              </div>
 )}
           </div>
         </Container>
