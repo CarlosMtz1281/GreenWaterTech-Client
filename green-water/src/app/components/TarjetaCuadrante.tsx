@@ -46,7 +46,11 @@ const styles = {
     },
     temperature: {
         fontSize: '14px'
+    },
+    graphfooter: {
+        fontSize: '0.5vh',
     }
+
 }
 const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
     const { planta1 } = data;
@@ -55,7 +59,7 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
         <div style={styles.container}>
             <Grid container>
             
-            <Grid item xs={5}>
+            <Grid item xs={6}>
             <p style={styles.humidity}>Humedad: {planta1.Humedad}%</p>
             <p style={styles.humidity}>Humedad Tierra: {planta1.Humedad_Tierra}%</p>
             <p style={styles.humidity}>Humedad Tierra Last Hour: {planta1.Humedad_Tierra_lastHour}%</p>
@@ -65,9 +69,8 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
             </Grid>
 
 
-            <Grid item xs={7}>
+            <Grid item xs={6}>
 
-            <Stack spacing={2}>
             <RoundedBarChart data={{
                 labels: ['HA', 'HT', 'HT LH', 'HA LH', 'T', 'T LH'],
                 datasets: [{
@@ -92,10 +95,6 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
                     borderWidth: 1,
                 }]
             }} />
-
-            
-
-            </Stack>
 
             </Grid>      
 
