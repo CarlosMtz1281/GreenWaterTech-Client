@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
-const RoundedBarChart = ({ data }) => {
-  const chartRef = useRef(null); // Reference to store the chart instance
-  const canvasRef = useRef(null); // Reference to the canvas DOM element
+const RoundedBarChart = ({ data }: any) => {
+  const chartRef = useRef<any>(null); // Reference to store the chart instance
+  const canvasRef = useRef<any>(null); // Reference to the canvas DOM element
 
   useEffect(() => {
     if (chartRef.current) {
@@ -20,7 +20,6 @@ const RoundedBarChart = ({ data }) => {
           legend: { position: 'top' },
           title: { display: true, text: 'Bar Chart' }
         },
-        borderRadius: 20
       },
     });
 

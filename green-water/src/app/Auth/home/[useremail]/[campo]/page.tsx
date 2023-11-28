@@ -16,7 +16,7 @@ export default function Campos() {
   const [humidity, setHumidity] = useState<any>([]);
   const [recomendation, setRecomendation] = useState("Error")
 
-  const handleChangeTab = (event, newValue) => {
+  const handleChangeTab = (event, newValue: any) => {
     setTabValue(newValue);
   };
 

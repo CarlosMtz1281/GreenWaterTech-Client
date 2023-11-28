@@ -5,7 +5,7 @@ import { FiSettings } from "react-icons/fi";
 import Link from "next/link";
 import { useState } from "react";
 import { get } from "http";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import LogoGreenWater from "../../../../public/logoGreenWater.png";
 
@@ -19,24 +19,19 @@ enum PathType {
 
 
 export default function NavBar() {
-  const [userMail, setUserMail] = useState(window.location.href.split("/")[5])
-
-  function getUserMail() {
-    if (typeof window !== 'undefined') {
-      setUserMail(window.location.href.split("/")[5])
-    }
-  }
-  //lector y manejo de current path
+  // Initialize state with default values
+  const [userMail, setUserMail] = useState("");
   const [currentPath, setCurrentPath] = useState("");
-  var URL;
+
   useEffect(() => {
-    URL = window.location.href.split("/")[5];
-    setCurrentPath(URL);
+    if (typeof window !== 'undefined') {
+      const pathSegments = window.location.href.split("/");
+      setUserMail(pathSegments[5]); // Update userMail based on URL
+      setCurrentPath(pathSegments[5]); // Update currentPath based on URL
+    }
   }, []);
 
-  const isPathActive = (path: PathType) => {
-    return currentPath === path ? true : false;
-  };
+  const isPathActive = (path: PathType) => currentPath === path;
 
   return (
 

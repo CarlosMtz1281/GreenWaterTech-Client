@@ -14,9 +14,9 @@ Chart.register(
   BarElement
 );
 
-const RoundedBarChart = ({ dataset1, label1 }) => {
-  const chartRef = useRef(null);
-  const chartInstanceRef = useRef(null);
+const RoundedBarChart = ({ dataset1, label1 }: any) => {
+  const chartRef = useRef<any>(null);
+  const chartInstanceRef = useRef<any>(null);
 
   const labels = ['Cuadrant 1', 'Cuadrant 2', 'Cuadrant 3', 'Cuadrant 4']; // Customize your labels
 

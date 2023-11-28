@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useEffect } from "react";
 
 
 interface Plant {
-  Humedad: number;
-  Humedad_Tierra: number;
-  Humedad_Tierra_lastHour: number;
-  Humedad_lastHour: number;
-  Temperatura: number;
-  Temperatura_lastHour: number;
+  Humedad: any;
+  Humedad_Tierra: any;
+  Humedad_Tierra_lastHour: any;
+  Humedad_lastHour: any;
+  Temperatura: any;
+  Temperatura_lastHour: any;
 }
 
 interface Cuadrante {
@@ -17,14 +17,14 @@ interface Cuadrante {
 }
 
 interface Campo {
-  Coordenates: string;
-  Locaiton: string;
+  Coordenates: any;
+  Locaiton: any;
   cuadrante1: Cuadrante;
   cuadrante2: Cuadrante;
   cuadrante3: Cuadrante;
   cuadrante4: Cuadrante;
-  idUB: number;
-  name: string;
+  idUB: any;
+  name: any;
 }
 
 interface TarjetaCampoProps {
@@ -108,12 +108,13 @@ const styles = {
 };
 
 
-const TarjetaCampo: React.FC<TarjetaCampoProps> = ({ data }) => {
-  const [userID, setUserId] = useState("");
-  var URL;
+const TarjetaCampo = ({ data }: any) => {
+  const [userID, setUserId] = useState<any>("");
+  const URL = useRef<any>(null);
+
   useEffect(() => {
-    URL = window.location.href.split("/")[5];
-    setUserId(URL);
+    URL.current = window.location.href.split("/")[5];
+    setUserId(URL.current);
   }, []);
   console.log(userID);
 
@@ -127,11 +128,11 @@ const TarjetaCampo: React.FC<TarjetaCampoProps> = ({ data }) => {
 
       <div style={styles.cuadranteSection}>
         <div style={styles.cuadrantesGrid}>
-          {Object.keys(data).filter(key => key.startsWith('cuadrante')).map((cuadrante) => (
-            <div style={styles.cuadranteWrp}>
+          {Object.keys(data).filter(key => key.startsWith('cuadrante')).map((cuadrante, index) => (
+            <div style={styles.cuadranteWrp} key = {index}>
               <h3>{cuadrante}</h3>
-              {Object.keys(data[cuadrante]).map((planta) => (
-                <div>
+              {Object.keys(data[cuadrante]).map((planta, index) => (
+                <div key = {index}>
                   <h4>{planta}</h4>
                   <h4>Hum: {data[cuadrante][planta].Humedad}</h4>
                   <h4>Temp: {data[cuadrante][planta].Temperatura}</h4>

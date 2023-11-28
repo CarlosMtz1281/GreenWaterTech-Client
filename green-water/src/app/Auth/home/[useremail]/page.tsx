@@ -1,21 +1,15 @@
 "use client";
 
-import React, { useState, useEffect, use } from "react";
+import React, { useState, useEffect } from "react";
 
 import { firebaseConfig } from "../../../firebase/firebaseconfig";
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc, DocumentData } from "firebase/firestore";
-import NavBar from "../../NavBar/Navbar";
-
 import TarjetaCampo from "@/app/components/TarjetaCampo";
-import { set } from "firebase/database";
 
-type HomeProps = {
-  params: any; // replace 'any' with the actual type of 'params'
-};
 
-export default function Home({ params }) {
+export default function Home({ params }: any) {
   const [realData, setRealData] = useState<any>([]);
   const [altData, setAltData] = useState<any>([]);
   const userEmail = decodeURIComponent(params.useremail);
