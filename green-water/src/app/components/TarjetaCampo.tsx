@@ -56,6 +56,7 @@ const styles = {
   },
   tittleWrap: {
    marginTop: "3vh",
+   width: "20vw",
    justifyContent: "center",
    alignItems: "center"
   },
@@ -78,7 +79,6 @@ const styles = {
     width: "2px",
     backgroundColor: "black",
     marginTop: "2.5vh",
-    marginLeft: "5vw",
     marginBottom: "1vh",
     display: "flex",
   },
@@ -130,7 +130,7 @@ const TarjetaCampo = ({ data }: any) => {
         <div style={styles.cuadrantesGrid}>
           {Object.keys(data).filter(key => key.startsWith('cuadrante')).map((cuadrante, index) => (
             <div style={styles.cuadranteWrp} key = {index}>
-              <h3>{cuadrante}</h3>
+              <h3>Cuadrant {index+1}</h3>
               {Object.keys(data[cuadrante]).map((planta, index) => (
                 <div key = {index}>
                   <h4>{planta}</h4>
