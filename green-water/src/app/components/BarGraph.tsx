@@ -14,11 +14,11 @@ Chart.register(
   BarElement
 );
 
-const RoundedBarChart = ({ dataset1, dataset2, label1, label2 }) => {
+const RoundedBarChart = ({ dataset1, label1 }) => {
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
 
-  const labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']; // Customize your labels
+  const labels = ['Cuadrant 1', 'Cuadrant 2', 'Cuadrant 3', 'Cuadrant 4']; // Customize your labels
 
   useEffect(() => {
     if (chartRef.current) {
@@ -43,15 +43,6 @@ const RoundedBarChart = ({ dataset1, dataset2, label1, label2 }) => {
                 borderWidth: 2,
                 borderRadius: 25,
               },
-              {
-                label: label2,
-                data: dataset2,
-                
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                borderColor: 'rgb(255, 99, 132)',
-                borderWidth: 2,
-                borderRadius: 25,
-              },
             ],
           },
           options: {
@@ -60,7 +51,7 @@ const RoundedBarChart = ({ dataset1, dataset2, label1, label2 }) => {
         });
       }
     }
-  }, [dataset1, dataset2]); // Re-run the effect when dataset1 or dataset2 changes
+  }, [dataset1]); // Re-run the effect when dataset1 or dataset2 changes
 
   return <canvas ref={chartRef} />;
 };
