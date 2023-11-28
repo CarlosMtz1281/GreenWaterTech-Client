@@ -339,9 +339,7 @@ useEffect(() => {
                       </div>
                     <div className="weather-container">
                       <div className="weather-info">
-                        <h2>Weather: {weatherTest[0].DailyForecasts[0].Day.IconPhrase} {weatherTest[0].DailyForecasts[0].Day.HasPrecipitation &&
-    `, ${weatherTest[0].DailyForecasts[0].Day.PrecipitationIntensity} ${weatherTest[0].DailyForecasts[0].Day.PrecipitationType}`
-  } </h2>
+                        <h2>Weather: {weatherTest[0].DailyForecasts[0].Day.IconPhrase}  </h2>
                         <h3>Temperature: <br/>  ---Maximum: {temperaturesMax[0]}  <br/>  ---Minimum: {temperaturesMin[0]}°</h3>
                         <h3>Ambient Humidity: 50%</h3>
                       </div>
