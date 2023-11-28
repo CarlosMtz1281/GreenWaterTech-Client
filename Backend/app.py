@@ -11,7 +11,7 @@ app.secret_key = "FerEsLaVergaYeaBoy!"
 app.logger.setLevel(logging.DEBUG)
 
 
-CORS(app, origins=["https://gwt-back.uc.r.appspot.com", "http://localhost:8000"], supports_credentials=True)
+CORS(app, origins=["https://gwt-back.uc.r.appspot.com", "http://localhost:8000", "https://green-water-tech-client-own1.vercel.app"], supports_credentials=True)
 
 #Session info
 @app.route('/api/login', methods=['GET'])
