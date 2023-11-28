@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import LineGraph from "@/app/components/lineGraph";
 import BarGraph from "@/app/components/BarGraph";
 import { set } from "firebase/database";
+import Image from "next/image";
 
 
 export default function Campos() {
@@ -97,42 +98,40 @@ export default function Campos() {
 
   const weatherTest = [{
     "Headline": {
-        "EffectiveDate": "2023-11-27T07:00:00-06:00",
-        "EffectiveEpochDate": 1701090000,
+        "EffectiveDate": "2023-11-30T07:00:00-06:00",
+        "EffectiveEpochDate": 1701349200,
         "Severity": 4,
-        "Text": "Noticeably cooler weather on the way today",
-        "Category": "cooler",
-        "EndDate": "2023-11-27T19:00:00-06:00",
-        "EndEpochDate": 1701133200,
+        "Text": "Becoming noticeably warmer Thursday",
+        "Category": "warmer",
+        "EndDate": "2023-11-30T19:00:00-06:00",
+        "EndEpochDate": 1701392400,
         "MobileLink": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?unit=c&lang=en-us",
         "Link": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?unit=c&lang=en-us"
     },
     "DailyForecasts": [
         {
-            "Date": "2023-11-27T07:00:00-06:00",
-            "EpochDate": 1701090000,
+            "Date": "2023-11-28T07:00:00-06:00",
+            "EpochDate": 1701176400,
             "Temperature": {
                 "Minimum": {
-                    "Value": 6.3,
+                    "Value": 7.7,
                     "Unit": "C",
                     "UnitType": 17
                 },
                 "Maximum": {
-                    "Value": 10.8,
+                    "Value": 14.6,
                     "Unit": "C",
                     "UnitType": 17
                 }
             },
             "Day": {
-                "Icon": 12,
-                "IconPhrase": "Showers",
-                "HasPrecipitation": true,
-                "PrecipitationType": "Rain",
-                "PrecipitationIntensity": "Light"
+                "Icon": 4,
+                "IconPhrase": "Intermittent clouds",
+                "HasPrecipitation": false
             },
             "Night": {
-                "Icon": 7,
-                "IconPhrase": "Cloudy",
+                "Icon": 8,
+                "IconPhrase": "Dreary",
                 "HasPrecipitation": false
             },
             "Sources": [
@@ -142,16 +141,16 @@ export default function Campos() {
             "Link": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=1&unit=c&lang=en-us"
         },
         {
-            "Date": "2023-11-28T07:00:00-06:00",
-            "EpochDate": 1701176400,
+            "Date": "2023-11-29T07:00:00-06:00",
+            "EpochDate": 1701262800,
             "Temperature": {
                 "Minimum": {
-                    "Value": 7.2,
+                    "Value": 10.9,
                     "Unit": "C",
                     "UnitType": 17
                 },
                 "Maximum": {
-                    "Value": 13.4,
+                    "Value": 15.9,
                     "Unit": "C",
                     "UnitType": 17
                 }
@@ -173,39 +172,6 @@ export default function Campos() {
             "Link": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=2&unit=c&lang=en-us"
         },
         {
-            "Date": "2023-11-29T07:00:00-06:00",
-            "EpochDate": 1701262800,
-            "Temperature": {
-                "Minimum": {
-                    "Value": 10.9,
-                    "Unit": "C",
-                    "UnitType": 17
-                },
-                "Maximum": {
-                    "Value": 14.5,
-                    "Unit": "C",
-                    "UnitType": 17
-                }
-            },
-            "Day": {
-                "Icon": 7,
-                "IconPhrase": "Cloudy",
-                "HasPrecipitation": true,
-                "PrecipitationType": "Rain",
-                "PrecipitationIntensity": "Light"
-            },
-            "Night": {
-                "Icon": 8,
-                "IconPhrase": "Dreary",
-                "HasPrecipitation": false
-            },
-            "Sources": [
-                "AccuWeather"
-            ],
-            "MobileLink": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=3&unit=c&lang=en-us",
-            "Link": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=3&unit=c&lang=en-us"
-        },
-        {
             "Date": "2023-11-30T07:00:00-06:00",
             "EpochDate": 1701349200,
             "Temperature": {
@@ -215,38 +181,7 @@ export default function Campos() {
                     "UnitType": 17
                 },
                 "Maximum": {
-                    "Value": 26.1,
-                    "Unit": "C",
-                    "UnitType": 17
-                }
-            },
-            "Day": {
-                "Icon": 3,
-                "IconPhrase": "Partly sunny",
-                "HasPrecipitation": false
-            },
-            "Night": {
-                "Icon": 36,
-                "IconPhrase": "Intermittent clouds",
-                "HasPrecipitation": false
-            },
-            "Sources": [
-                "AccuWeather"
-            ],
-            "MobileLink": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=4&unit=c&lang=en-us",
-            "Link": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=4&unit=c&lang=en-us"
-        },
-        {
-            "Date": "2023-12-01T07:00:00-06:00",
-            "EpochDate": 1701435600,
-            "Temperature": {
-                "Minimum": {
-                    "Value": 12.4,
-                    "Unit": "C",
-                    "UnitType": 17
-                },
-                "Maximum": {
-                    "Value": 23.5,
+                    "Value": 26.3,
                     "Unit": "C",
                     "UnitType": 17
                 }
@@ -259,6 +194,68 @@ export default function Campos() {
             "Night": {
                 "Icon": 35,
                 "IconPhrase": "Partly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=3&unit=c&lang=en-us",
+            "Link": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=3&unit=c&lang=en-us"
+        },
+        {
+            "Date": "2023-12-01T07:00:00-06:00",
+            "EpochDate": 1701435600,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 11.9,
+                    "Unit": "C",
+                    "UnitType": 17
+                },
+                "Maximum": {
+                    "Value": 23.3,
+                    "Unit": "C",
+                    "UnitType": 17
+                }
+            },
+            "Day": {
+                "Icon": 4,
+                "IconPhrase": "Intermittent clouds",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 38,
+                "IconPhrase": "Mostly cloudy",
+                "HasPrecipitation": false
+            },
+            "Sources": [
+                "AccuWeather"
+            ],
+            "MobileLink": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=4&unit=c&lang=en-us",
+            "Link": "http://www.accuweather.com/en/mx/monterrey/244681/daily-weather-forecast/244681?day=4&unit=c&lang=en-us"
+        },
+        {
+            "Date": "2023-12-02T07:00:00-06:00",
+            "EpochDate": 1701522000,
+            "Temperature": {
+                "Minimum": {
+                    "Value": 12.8,
+                    "Unit": "C",
+                    "UnitType": 17
+                },
+                "Maximum": {
+                    "Value": 22.9,
+                    "Unit": "C",
+                    "UnitType": 17
+                }
+            },
+            "Day": {
+                "Icon": 6,
+                "IconPhrase": "Mostly cloudy",
+                "HasPrecipitation": false
+            },
+            "Night": {
+                "Icon": 7,
+                "IconPhrase": "Cloudy",
                 "HasPrecipitation": false
             },
             "Sources": [
@@ -300,6 +297,7 @@ useEffect(() => {
   console.log(arr);
 }, [realData]);
 
+
   const temperaturesMin = weatherTest[0].DailyForecasts.map((day) => day.Temperature.Minimum.Value);
   const temperaturesMax = weatherTest[0].DailyForecasts.map((day) => day.Temperature.Maximum.Value);
 
@@ -328,20 +326,22 @@ useEffect(() => {
               <div className="campo-generalInfo">
                 <div className="gi-topRow">
                   <div className="campo-gi-header">
+
                     <div>
                       <h1 className="gi-campoName">Campo el Cuchillo</h1>
                       <h3 className="gi-location">Santaigo N.L Mexico</h3>
                       <p>Latitude: 25.5626, Longitude: -100.2285</p>
                     </div>
+                    <div className="weather-image">
+                        <Image src="/intermitentCloud.png" width= {80} height={80} alt="weather Icon" />
+                      </div>
                     <div className="weather-container">
                       <div className="weather-info">
                         <h2>Weather: {weatherTest[0].DailyForecasts[0].Day.IconPhrase}, {weatherTest[0].DailyForecasts[0].Day.PrecipitationIntensity} {weatherTest[0].DailyForecasts[0].Day.PrecipitationType} </h2>
-                        <h3>Temperature: Maximum: {temperaturesMax[0]} , Minimum: {temperaturesMin[0]}°</h3>
+                        <h3>Temperature: <br/>  ---Maximum: {temperaturesMax[0]}  <br/>  ---Minimum: {temperaturesMin[0]}°</h3>
                         <h3>Ambient Humidity: 50%</h3>
                       </div>
-                      {/* <div className="weather-image">
-                        <img src="/weather.png" alt="weather" />
-                      </div> */}
+
                     </div>
                   </div>
 

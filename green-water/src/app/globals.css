@@ -461,8 +461,17 @@ html{
   font-weight: 300;
 }
 .weather-container{
-  margin-top: 4vh;
-  margin-left: 3vw;
+  margin-top: 1.5vh;
+  margin-left: 1vw;
+  display: flex;
+}
+.weather-info{
+  margin-left: 0vw;
+  margin-top: 0vh;
+}
+.weather-image{
+  margin-left: 5vw;
+  margin-top: 3vh;
 }
 .weather-container h2{
   font-size: 1.2vw;
