@@ -4,7 +4,7 @@ import { Container, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
 import LineGraph from "@/app/components/lineGraph";
-import BarGrap from "@/app/components/BarGraph";
+import BarGraph from "@/app/components/BarGraph";
 import { set } from "firebase/database";
 
 
@@ -347,9 +347,9 @@ useEffect(() => {
 
                 <div className="data-stats">
 
-                  <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax}/>
+                  <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax} label1 = {"Temperaturas mínimas"} label2 = {"Temperaturas máximas"} />
 
-                  <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax}/>
+                  <BarGraph dataset1={temperaturesMin} dataset2={temperaturesMax} label1={"Temperaturas mínimas"} label2={"Temperaturas máximas"} /> 
 
                 </div>
 

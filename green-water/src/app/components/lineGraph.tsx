@@ -19,9 +19,11 @@ Chart.register(
 interface LineGraphProps {
   dataset1: number[];
   dataset2: number[];
+  label1: string;
+  label2: string;
 }
 
-const LineGraph: React.FC<LineGraphProps> = ({ dataset1, dataset2 }) => {
+const LineGraph: React.FC<LineGraphProps> = ({ dataset1, dataset2, label1, label2 }) => {
 
   const chartRef = useRef<HTMLCanvasElement>(null);
 
@@ -58,13 +60,13 @@ const LineGraph: React.FC<LineGraphProps> = ({ dataset1, dataset2 }) => {
             labels: getNextFiveDays(),
             datasets: [
               {
-                label: "Dataset 1",
+                label: label1,
                 data: dataset1,
                 borderColor: "red",
                 fill: false,
               },
               {
-                label: "Dataset 2",
+                label: label2,
                 data: dataset2,
                 borderColor: "blue",
                 fill: false,

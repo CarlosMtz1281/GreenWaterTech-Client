@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, Stack } from '@mui/material';
 import RoundedBarChart from './BorderedGraph';
 
 interface Props {
@@ -66,8 +66,10 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
 
 
             <Grid item xs={7}>
+
+            <Stack spacing={2}>
             <RoundedBarChart data={{
-                labels: ['Humedad', 'Humedad Tierra', 'Humedad Tierra Last Hour', 'Humedad Last Hour', 'Temperature', 'Temperature Last Hour'],
+                labels: ['HA', 'HT', 'HT LH', 'HA LH', 'T', 'T LH'],
                 datasets: [{
                     label: 'Values',
                     data: [planta1.Humedad, planta1.Humedad_Tierra, planta1.Humedad_Tierra_lastHour, planta1.Humedad_lastHour, planta1.Temperatura, planta1.Temperatura_lastHour],
@@ -89,7 +91,12 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
                     ],
                     borderWidth: 1,
                 }]
-            }} />      
+            }} />
+
+            
+
+            </Stack>
+
             </Grid>      
 
             </Grid>
