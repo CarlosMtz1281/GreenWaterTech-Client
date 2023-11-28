@@ -22,10 +22,7 @@ interface LineGraphProps {
 }
 
 const LineGraph: React.FC<LineGraphProps> = ({ dataset1, dataset2 }) => {
-  console.log("LineGraph");
-  console.log(dataset1);
-  console.log(dataset2);
-  console.log(Date());
+
   const chartRef = useRef<HTMLCanvasElement>(null);
 
   function getNextFiveDays() {

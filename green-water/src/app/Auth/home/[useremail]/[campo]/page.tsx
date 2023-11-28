@@ -14,6 +14,7 @@ export default function Campos() {
   const [altData, setAltData] = useState<any>([]);
   const [RealweatherData, setRealWeatherData] = useState<any>([]);
   const [humidity, setHumidity] = useState<any>([]);
+  const [recomendation, setRecomendation] = useState("Error")
 
   const handleChangeTab = (event, newValue) => {
     setTabValue(newValue);
@@ -49,11 +50,14 @@ export default function Campos() {
         if (!isNaN(campoNumber) && campoNumber >= 1 && campoNumber <= 4) {
           selectedData = formattedData[campoNumber - 1];
           setRealData([selectedData]);
+
         } else {
           setRealData(formattedData);
         }
 
         setAltData(altData); // Assuming you have a state variable altData
+
+
 
         // Fetch weather data
         /*
@@ -75,6 +79,8 @@ export default function Campos() {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
+
+
     };
 
 
@@ -84,8 +90,7 @@ export default function Campos() {
   useEffect(() => {
     if (realData.length > 0) {
       const cuadrantes = ['cuadrante1', 'cuadrante2', 'cuadrante3', 'cuadrante4'].map(cuadrante => realData[0][cuadrante].planta1.Humedad_Tierra_lastHour);
-      console.log("CUADRANTES")
-      console.log(cuadrantes);
+
       setHumidity(cuadrantes);
     }
   }, [realData]);
@@ -264,12 +269,31 @@ export default function Campos() {
         }
     ]
 }]
-  console.log(realData[0]);
-  console.log(altData);
-  console.log("WEATHER DATA AFTER")
-  console.log(RealweatherData);
-  console.log(weatherTest)
-  console.log(humidity)
+
+useEffect(() => {
+  let suggestion = "";
+  if(realData && realData.length > 0){
+    if(realData[0].cuadrante1.planta1.Humedad_Tierra_lastHour < 20){
+      suggestion = "The soil of cuadrant 1 is too dry, you should water it ";
+    }
+    if(realData[0].cuadrante2.planta1.Humedad_Tierra_lastHour < 20){
+      suggestion = suggestion +"The soil of cuadrant 2 is too dry, you should water it";
+    }
+    if(realData[0].cuadrante3.planta1.Humedad_Tierra_lastHour < 20){
+      suggestion = suggestion +"The soil of cuadrant 3 is too dry, you should water it";
+    }
+    if(realData[0].cuadrante4.planta1.Humedad_Tierra_lastHour < 20){
+      suggestion = suggestion +"The soil of cuadrant 4 is too dry, you should water it";
+    }
+    if(suggestion == ""){
+      suggestion = "Your plants have apropiate soil humidity irrigation is not necesary right now"
+    }
+  }
+  console.log("suggestion");
+  console.log(suggestion);
+  setRecomendation(suggestion);
+}, [realData]);
+
   const temperaturesMin = weatherTest[0].DailyForecasts.map((day) => day.Temperature.Minimum.Value);
   const temperaturesMax = weatherTest[0].DailyForecasts.map((day) => day.Temperature.Maximum.Value);
 
@@ -294,25 +318,39 @@ export default function Campos() {
           <div className="tab-content">
             {tabValue === "general" && (
               <div className="campo-generalInfo">
-                <div className="campo-gi-header">
-                  <h1>Campo el cuchillo</h1>
-                  <h3>Santaigo N.L Mexico</h3>
-                  <p>Latitude: xxxxxxxxx, Longitude: xxxxxxxx</p>
-                </div>
-                <div className="weather-container">
-                  <div className="weather-info">
-                    <h2>Weather</h2>
-                    <h3>Temperature: 20°</h3>
-                    <h3>Humidity: 50%</h3>
+                <div className="gi-topRow">
+                  <div className="campo-gi-header">
+                    <div>
+                      <h1 className="gi-campoName">Campo el cuchillo</h1>
+                      <h3 className="gi-location">Santaigo N.L Mexico</h3>
+                      <p>Latitude: xxxxxxxxx, Longitude: xxxxxxxx</p>
+                    </div>
+                    <div className="weather-container">
+                      <div className="weather-info">
+                        <h2>Weather: {weatherTest[0].DailyForecasts[0].Day.IconPhrase}, {weatherTest[0].DailyForecasts[0].Day.PrecipitationIntensity} {weatherTest[0].DailyForecasts[0].Day.PrecipitationType} </h2>
+                        <h3>Temperature: Maximun:{temperaturesMax[0]} , Minimum:{temperaturesMin[0]}°</h3>
+                        <h3>Humidity: 50%</h3>
+                      </div>
+                      <div className="weather-image">
+                        <img src="/weather.png" alt="weather" />
+                      </div>
+                    </div>
                   </div>
-                  <div className="weather-image">
-                    <img src="/weather.png" alt="weather" />
+
+                  <div className="gi-recomendation">
+                    <h2>Recomendation based on weather and sensor data</h2>
+                    <p>{recomendation}</p>
                   </div>
+
                 </div>
 
+
                 <div className="data-stats">
+
                   <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax}/>
-                  <BarGrap data={humidity}/>
+
+                  <LineGraph dataset1={temperaturesMin} dataset2={temperaturesMax}/>
+
                 </div>
 
                 <div className="recomendation"></div>
