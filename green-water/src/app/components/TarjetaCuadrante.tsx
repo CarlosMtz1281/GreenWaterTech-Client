@@ -79,7 +79,7 @@ const TarjetaCuadrante: React.FC<Props> = ({ data }) => {
             <Grid item xs={6}>
 
             <RoundedBarChart data={{
-                labels: ['HA', 'HT', 'HT LH', 'HA LH', 'T', 'T LH'],
+                labels: ['AH', 'SH', 'SH LH', 'AH LH', 'T', 'T LH'],
                 datasets: [{
                     label: 'Values',
                     data: [planta1.Humedad, planta1.Humedad_Tierra, planta1.Humedad_Tierra_lastHour, planta1.Humedad_lastHour, planta1.Temperatura, planta1.Temperatura_lastHour],
